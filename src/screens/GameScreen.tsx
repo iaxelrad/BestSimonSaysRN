@@ -1,12 +1,20 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {Pressable, StyleSheet, Text, View} from 'react-native';
 import React, {FC} from 'react';
 
-interface IProps {}
+interface IProps {
+  navigation: any;
+}
 
-const GameScreen: FC<IProps> = () => {
+const GameScreen: FC<IProps> = ({navigation}) => {
+  const goBack = () => {
+    navigation.goBack();
+  };
   return (
     <View style={styles.container}>
       <Text>GameScreen</Text>
+      <Pressable onPress={goBack}>
+        <Text>Home Page</Text>
+      </Pressable>
     </View>
   );
 };
