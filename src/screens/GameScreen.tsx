@@ -1,5 +1,6 @@
-import {Pressable, StyleSheet, Text, View} from 'react-native';
 import React, {FC} from 'react';
+import {StyleSheet, Text, View} from 'react-native';
+import {CustomButton} from '../shared/CustomButton';
 
 interface IProps {
   navigation: any;
@@ -12,9 +13,7 @@ const GameScreen: FC<IProps> = ({navigation}) => {
   return (
     <View style={styles.container}>
       <Text>GameScreen</Text>
-      <Pressable onPress={goBack}>
-        <Text>Home Page</Text>
-      </Pressable>
+      <CustomButton onPress={goBack} buttonText="Home Page" />
     </View>
   );
 };
