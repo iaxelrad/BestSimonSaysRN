@@ -29,10 +29,10 @@ export const CustomButton: FC<ButtonProps> = ({
 
 const styles = StyleSheet.create({
   button: {
-    width: '80%',
+    width: 150,
     paddingVertical: 10,
     borderRadius: 8,
-    marginVertical: 16,
+    marginVertical: 8,
   },
   text: {
     fontSize: 16,
