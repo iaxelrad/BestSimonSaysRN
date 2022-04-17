@@ -1,7 +1,8 @@
 import React, {FC} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView, StyleSheet, View} from 'react-native';
 import {routes} from '../routes';
-import {CustomButton} from '../shared/CustomButton';
+import {CustomButton} from '../shared/components/CustomButton';
+import {Header} from '../shared/components/Header';
 
 interface IProps {
   navigation: any;
@@ -17,21 +18,23 @@ const HomeScreen: FC<IProps> = ({navigation}) => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Simon Says</Text>
-      <CustomButton
-        onPress={goToNewGame}
-        buttonText="New Game"
-        style={styles.newGameButton}
-        textStyle={styles.newGameText}
-      />
-      <CustomButton
-        onPress={goToResults}
-        buttonText="High Scores"
-        style={styles.resultsButton}
-        textStyle={styles.newGameText}
-      />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <Header title="Simon Says" />
+      <View style={styles.buttonContainer}>
+        <CustomButton
+          onPress={goToNewGame}
+          buttonText="New Game"
+          style={styles.newGameButton}
+          textStyle={styles.newGameText}
+        />
+        <CustomButton
+          onPress={goToResults}
+          buttonText="High Scores"
+          style={styles.resultsButton}
+          textStyle={styles.newGameText}
+        />
+      </View>
+    </SafeAreaView>
   );
 };
 
@@ -39,18 +42,14 @@ export default HomeScreen;
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     paddingVertical: 16,
     marginHorizontal: 32,
     backgroundColor: '#f1f1f1',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  title: {
-    fontSize: 32,
-    textAlign: 'center',
-    fontWeight: 'bold',
-    marginBottom: 32,
-  },
+  buttonContainer: {flex: 1},
   newGameButton: {
     backgroundColor: 'green',
   },
