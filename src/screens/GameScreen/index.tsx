@@ -38,7 +38,7 @@ const GameScreen: FC<IProps> = () => {
         activeButtonIndex={activeButtonIndex}
       />
       {gameStarted ? (
-        <View style={!gameStarted && styles.invisible}>
+        <View>
           <Text>Game score: {gameLevel}</Text>
         </View>
       ) : (
