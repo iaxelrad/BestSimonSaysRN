@@ -5,16 +5,38 @@ import {styles} from './GameButton.styles';
 
 interface ButtonProps {
   color: GameButtonModel;
+  setActiveButtonIndex: (index: number) => void;
+  disabled: boolean;
+  activeButtonIndex: number;
+  index: number;
+  handlePlayerNoteInput: (note: number) => void;
 }
 
-export const GameButton: FC<ButtonProps> = ({color}) => {
-  const onPress = () => {
-    console.log(color.color);
-  };
+export const GameButton: FC<ButtonProps> = ({
+  color,
+  setActiveButtonIndex,
+  disabled,
+  activeButtonIndex,
+  index,
+  handlePlayerNoteInput,
+}) => {
+  // const onPress = () => {
+  //   console.log(color.color);
+  // };
   return (
     <TouchableOpacity
-      onPress={onPress}
-      style={[styles.button, {backgroundColor: color.color}]}
+      disabled={disabled}
+      onPressIn={() => setActiveButtonIndex(index)}
+      onPressOut={() => setActiveButtonIndex(null)}
+      onPress={async () => handlePlayerNoteInput(index)}
+      style={[
+        styles.button,
+        {
+          backgroundColor: `hsl(${color.color}, 100%, ${
+            activeButtonIndex === index ? '80%' : '50%'
+          })`,
+        },
+      ]}
     />
   );
 };
