@@ -1,8 +1,8 @@
 import React, {FC} from 'react';
 import {SafeAreaView, StyleSheet, View} from 'react-native';
-import {routes} from '../routes';
-import {CustomButton} from '../shared/components/CustomButton';
-import {Header} from '../shared/components/Header';
+import {routes} from '../../routes';
+import {CustomButton} from '../../shared/components/CustomButton';
+import {Header} from '../../shared/components/Header';
 
 interface IProps {
   navigation: any;

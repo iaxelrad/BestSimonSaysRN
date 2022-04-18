@@ -1,22 +1,22 @@
 import React, {FC} from 'react';
 import {SafeAreaView, StyleSheet, View} from 'react-native';
-import {CustomButton} from '../shared/components/CustomButton';
-import {Header} from '../shared/components/Header';
+import {CustomButton} from '../../shared/components/CustomButton';
+import {Header} from '../../shared/components/Header';
 
 interface IProps {
   navigation: any;
 }
 
-const GameScreen: FC<IProps> = ({navigation}) => {
-  const goBack = () => {
-    navigation.goBack();
+const HighScoreScreen: FC<IProps> = ({navigation}) => {
+  const goToHome = () => {
+    navigation.popToTop();
   };
   return (
     <SafeAreaView style={styles.container}>
-      <Header title="Let's Play" />
+      <Header title="Top Scores" />
       <View style={styles.buttonContainer}>
         <CustomButton
-          onPress={goBack}
+          onPress={goToHome}
           buttonText="Home Page"
           style={styles.homeButton}
           textStyle={styles.homeButtonText}
@@ -26,7 +26,7 @@ const GameScreen: FC<IProps> = ({navigation}) => {
   );
 };
 
-export default GameScreen;
+export default HighScoreScreen;
 
 const styles = StyleSheet.create({
   container: {
