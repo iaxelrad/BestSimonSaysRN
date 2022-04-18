@@ -20,15 +20,12 @@ export const GameButton: FC<ButtonProps> = ({
   index,
   handlePlayerNoteInput,
 }) => {
-  // const onPress = () => {
-  //   console.log(color.color);
-  // };
   return (
     <TouchableOpacity
       disabled={disabled}
       onPressIn={() => setActiveButtonIndex(index)}
       onPressOut={() => setActiveButtonIndex(null)}
-      onPress={async () => handlePlayerNoteInput(index)}
+      onPress={() => handlePlayerNoteInput(index)}
       style={[
         styles.button,
         {
