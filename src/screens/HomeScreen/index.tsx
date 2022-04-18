@@ -3,12 +3,14 @@ import {SafeAreaView, StyleSheet, View} from 'react-native';
 import {routes} from '../../routes';
 import {CustomButton} from '../../shared/components/CustomButton';
 import {Header} from '../../shared/components/Header';
+import {useNavigation} from '@react-navigation/native';
+import {Nav} from '../../shared/types';
 
-interface IProps {
-  navigation: any;
-}
+interface IProps {}
 
-const HomeScreen: FC<IProps> = ({navigation}) => {
+const HomeScreen: FC<IProps> = () => {
+  const navigation = useNavigation<Nav>();
+
   const goToNewGame = (): void => {
     navigation.navigate(routes.GAME);
   };

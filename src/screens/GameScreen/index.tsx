@@ -1,17 +1,18 @@
+import {useNavigation} from '@react-navigation/native';
 import React, {FC} from 'react';
 import {SafeAreaView, View} from 'react-native';
 import {CustomButton} from '../../shared/components/CustomButton';
 import {Header} from '../../shared/components/Header';
+import {Nav} from '../../shared/types';
 import {GameButtons} from './components/GameButtons';
 import {styles} from './GameScreen.styles';
 
-interface IProps {
-  navigation: any;
-}
+interface IProps {}
 
-const GameScreen: FC<IProps> = ({navigation}) => {
+const GameScreen: FC<IProps> = () => {
+  const navigation = useNavigation<Nav>();
   const goBack = () => {
-    navigation.goBack();
+    navigation?.goBack();
   };
   return (
     <SafeAreaView style={styles.container}>

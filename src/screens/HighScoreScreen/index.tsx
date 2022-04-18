@@ -1,15 +1,16 @@
+import {useNavigation} from '@react-navigation/native';
 import React, {FC} from 'react';
 import {SafeAreaView, StyleSheet, View} from 'react-native';
 import {CustomButton} from '../../shared/components/CustomButton';
 import {Header} from '../../shared/components/Header';
+import {Nav} from '../../shared/types';
 
-interface IProps {
-  navigation: any;
-}
+interface IProps {}
 
-const HighScoreScreen: FC<IProps> = ({navigation}) => {
+const HighScoreScreen: FC<IProps> = () => {
+  const navigation = useNavigation<Nav>();
   const goToHome = () => {
-    navigation.popToTop();
+    navigation?.popToTop();
   };
   return (
     <SafeAreaView style={styles.container}>
