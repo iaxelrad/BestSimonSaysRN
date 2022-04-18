@@ -16,6 +16,7 @@ export const Header: FC<HeaderProps> = ({title}) => {
 const styles = StyleSheet.create({
   title: {
     fontSize: 32,
+    color: 'black',
     textAlign: 'center',
     fontWeight: 'bold',
     marginBottom: 32,
