@@ -53,7 +53,7 @@ const HighScoreScreen: FC<IProps> = () => {
   return (
     <WrapperComponent headerTitle="Top Scores">
       {renderContent()}
-      <View style={styles.buttonContainer}>
+      <View>
         <CustomButton
           onPress={() => {
             navigation.navigate(routes.GAME);

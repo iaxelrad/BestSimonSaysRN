@@ -23,5 +23,5 @@ export const styles = StyleSheet.create({
     height: 2,
     backgroundColor: 'black',
   },
-  score: {paddingVertical: 10, fontSize: 20, color: 'black'},
+  score: {paddingVertical: 8, fontSize: 20, color: 'black'},
 });

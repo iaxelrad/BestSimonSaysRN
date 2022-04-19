@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
     width: gameContainerSize,
     height: gameContainerSize,
     borderRadius: gameContainerSize / 2,
-    borderWidth: 4,
+    borderWidth: 9,
     flexDirection: 'row',
     overflow: 'hidden',
   },

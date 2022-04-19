@@ -19,6 +19,6 @@ const styles = StyleSheet.create({
     color: 'black',
     textAlign: 'center',
     fontWeight: 'bold',
-    marginBottom: 32,
+    marginBottom: 16,
   },
 });
