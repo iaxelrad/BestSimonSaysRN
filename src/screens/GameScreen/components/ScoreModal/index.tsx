@@ -34,6 +34,10 @@ export const ScoreModal: FC<IProps> = props => {
     setShowNewScorePopup(!showNewScorePopup);
   };
 
+  if (!showNewScorePopup) {
+    return null;
+  }
+
   return (
     <Modal animationType="slide" transparent={true}>
       <Pressable
@@ -44,7 +48,7 @@ export const ScoreModal: FC<IProps> = props => {
           }
         }}>
         <View style={styles.modalView}>
-          <Text style={styles.text}>Sorry but you loose!</Text>
+          <Text style={styles.text}>You Scored a New Record!</Text>
           <Text style={styles.text}>Your score is: {String(score)}</Text>
           <Text style={styles.text}>Please enter you name</Text>
           <View style={styles.inputContainer}>
