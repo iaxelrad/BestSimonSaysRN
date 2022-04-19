@@ -52,17 +52,18 @@ const GameScreen: FC<IProps> = () => {
           setShowNewScorePopup={setShowNewScorePopup}
         />
       )}
+      {gameStarted && (
+        <View style={styles.scoresContainer}>
+          <Text style={styles.scoreText}>Game score: {gameLevel}</Text>
+        </View>
+      )}
       <GameButtons
         setActiveButtonIndex={setActiveButtonIndex}
         handlePlayerNoteInput={handlePlayerNoteInput}
         disabled={!gameStarted || !playersTurn}
         activeButtonIndex={activeButtonIndex}
       />
-      {gameStarted ? (
-        <View>
-          <Text>Game score: {gameLevel}</Text>
-        </View>
-      ) : (
+      {!gameStarted && (
         <View style={styles.buttonContainer}>
           <CustomButton
             onPress={startTheGame}

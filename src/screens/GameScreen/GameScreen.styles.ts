@@ -11,6 +11,17 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: 16,
   },
+  scoresContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: 16,
+  },
+  scoreText: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: 'red',
+    position: 'relative',
+  },
   startGameButton: {
     backgroundColor: 'green',
   },
