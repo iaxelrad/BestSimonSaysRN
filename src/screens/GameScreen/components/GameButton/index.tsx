@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import {TouchableOpacity} from 'react-native';
+import {Pressable, TouchableOpacity} from 'react-native';
 import {GameButtonModel} from '../../../../shared/utils/constants';
 import {styles} from './GameButton.styles';
 
@@ -21,7 +21,7 @@ export const GameButton: FC<ButtonProps> = ({
   handlePlayerNoteInput,
 }) => {
   return (
-    <TouchableOpacity
+    <Pressable
       disabled={disabled}
       onPressIn={() => setActiveButtonIndex(index)}
       onPressOut={() => setActiveButtonIndex(null)}
@@ -29,8 +29,8 @@ export const GameButton: FC<ButtonProps> = ({
       style={[
         styles.button,
         {
-          backgroundColor:
-            activeButtonIndex === index ? color.lighterColor : color.color,
+          backgroundColor: color.color,
+          opacity: activeButtonIndex === index ? 0.5 : 1,
         },
       ]}
     />
