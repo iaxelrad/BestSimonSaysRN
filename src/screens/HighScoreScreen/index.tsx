@@ -23,7 +23,7 @@ const HighScoreScreen: FC<IProps> = () => {
       setHighScores(scores);
     };
     getScores();
-  }, []);
+  }, [highScores]);
 
   const mapScores = (
     {name, score}: {name: string; score: number},
@@ -53,7 +53,7 @@ const HighScoreScreen: FC<IProps> = () => {
             navigation.navigate(routes.GAME);
           }}
           buttonText="New Game"
-          style={styles.homeButton}
+          style={styles.newGameButton}
           textStyle={styles.homeButtonText}
         />
         <CustomButton
@@ -80,6 +80,9 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {flex: 1},
   homeButton: {
+    backgroundColor: 'red',
+  },
+  newGameButton: {
     backgroundColor: 'green',
   },
   homeButtonText: {
