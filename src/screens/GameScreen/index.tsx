@@ -1,9 +1,9 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {FC, useEffect, useState} from 'react';
-import {SafeAreaView, Text, View} from 'react-native';
+import {Text, View} from 'react-native';
 import {useGame} from '../../hooks/useGame';
+import {WrapperComponent} from '../../shared/components/WrapperComponent';
 import {CustomButton} from '../../shared/components/CustomButton';
-import {Header} from '../../shared/components/Header';
 import {IHighScore} from '../../shared/interfaces';
 import {getHighScores} from '../../shared/utils/helpers';
 import {GameButtons} from './components/GameButtons';
@@ -44,8 +44,7 @@ const GameScreen: FC<IProps> = () => {
 
   const disabled = !!gameStarted;
   return (
-    <SafeAreaView style={styles.container}>
-      <Header title="Let's Play" />
+    <WrapperComponent headerTitle="Let's Play">
       {showNewScorePopup && (
         <ScoreModal
           highScores={results}
@@ -81,7 +80,7 @@ const GameScreen: FC<IProps> = () => {
           textStyle={styles.homeButtonText}
         />
       </View>
-    </SafeAreaView>
+    </WrapperComponent>
   );
 };
 

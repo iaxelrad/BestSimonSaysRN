@@ -1,9 +1,9 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {FC, useEffect, useState} from 'react';
-import {SafeAreaView, ScrollView, Text, View} from 'react-native';
+import {ScrollView, Text, View} from 'react-native';
 import {routes} from '../../routes';
+import {WrapperComponent} from '../../shared/components/WrapperComponent';
 import {CustomButton} from '../../shared/components/CustomButton';
-import {Header} from '../../shared/components/Header';
 import {IHighScore} from '../../shared/interfaces';
 import {MAX_NUM_OF_RESULTS} from '../../shared/utils/constants';
 import {getHighScores, sortScores} from '../../shared/utils/helpers';
@@ -51,8 +51,7 @@ const HighScoreScreen: FC<IProps> = () => {
   );
 
   return (
-    <SafeAreaView style={styles.container}>
-      <Header title="Top Scores" />
+    <WrapperComponent headerTitle="Top Scores">
       {renderContent()}
       <View style={styles.buttonContainer}>
         <CustomButton
@@ -70,7 +69,7 @@ const HighScoreScreen: FC<IProps> = () => {
           textStyle={styles.homeButtonText}
         />
       </View>
-    </SafeAreaView>
+    </WrapperComponent>
   );
 };
 

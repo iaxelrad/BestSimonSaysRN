@@ -1,10 +1,10 @@
 import React, {FC} from 'react';
-import {Image, SafeAreaView, View} from 'react-native';
+import {Image, View} from 'react-native';
 import {routes} from '../../routes';
 import {CustomButton} from '../../shared/components/CustomButton';
-import {Header} from '../../shared/components/Header';
 import {useNavigation} from '@react-navigation/native';
 import {styles} from './HomeScreen.styles';
+import {WrapperComponent} from '../../shared/components/WrapperComponent';
 
 interface IProps {}
 
@@ -20,8 +20,7 @@ const HomeScreen: FC<IProps> = () => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
-      <Header title="Simon Says" />
+    <WrapperComponent headerTitle="Simon Says">
       <View style={styles.imageContainer}>
         <Image
           style={styles.image}
@@ -42,7 +41,7 @@ const HomeScreen: FC<IProps> = () => {
           textStyle={styles.newGameText}
         />
       </View>
-    </SafeAreaView>
+    </WrapperComponent>
   );
 };
 
