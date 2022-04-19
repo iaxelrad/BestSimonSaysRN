@@ -2,11 +2,15 @@ import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    paddingVertical: 16,
+    marginHorizontal: 32,
     backgroundColor: '#f1f1f1',
     justifyContent: 'center',
     alignItems: 'center',
   },
   buttonContainer: {
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 16,
@@ -22,13 +26,8 @@ export const styles = StyleSheet.create({
     color: 'red',
     position: 'relative',
   },
-  startGameButton: {
-    backgroundColor: 'green',
-  },
-  homeButton: {
-    backgroundColor: 'red',
-  },
-  homeButtonText: {
-    color: 'white',
-  },
+  startGameButton: {backgroundColor: 'green'},
+  homeButton: {backgroundColor: 'red'},
+  homeButtonText: {color: 'white'},
+  disabled: {opacity: 0.4},
 });

@@ -12,6 +12,7 @@ interface ButtonProps {
   style?: ViewStyle;
   buttonText: string;
   textStyle?: TextStyle;
+  disabled?: boolean;
 }
 
 export const CustomButton: FC<ButtonProps> = ({
@@ -19,9 +20,13 @@ export const CustomButton: FC<ButtonProps> = ({
   style,
   textStyle,
   buttonText,
+  disabled,
 }) => {
   return (
-    <TouchableOpacity style={[styles.button, style]} onPress={onPress}>
+    <TouchableOpacity
+      disabled={disabled}
+      style={[styles.button, style]}
+      onPress={onPress}>
       <Text style={[styles.text, textStyle]}>{buttonText}</Text>
     </TouchableOpacity>
   );
@@ -29,13 +34,10 @@ export const CustomButton: FC<ButtonProps> = ({
 
 const styles = StyleSheet.create({
   button: {
-    width: 150,
+    width: 250,
     paddingVertical: 10,
     borderRadius: 8,
     marginVertical: 8,
   },
-  text: {
-    fontSize: 16,
-    textAlign: 'center',
-  },
+  text: {fontSize: 16, textAlign: 'center'},
 });

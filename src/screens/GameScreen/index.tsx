@@ -41,6 +41,8 @@ const GameScreen: FC<IProps> = () => {
   const goBack = () => {
     navigation?.goBack();
   };
+
+  const disabled = !!gameStarted;
   return (
     <SafeAreaView style={styles.container}>
       <Header title="Let's Play" />
@@ -63,22 +65,22 @@ const GameScreen: FC<IProps> = () => {
         disabled={!gameStarted || !playersTurn}
         activeButtonIndex={activeButtonIndex}
       />
-      {!gameStarted && (
-        <View style={styles.buttonContainer}>
-          <CustomButton
-            onPress={startTheGame}
-            buttonText="Start Game"
-            style={styles.startGameButton}
-            textStyle={styles.homeButtonText}
-          />
-          <CustomButton
-            onPress={goBack}
-            buttonText="Home Page"
-            style={styles.homeButton}
-            textStyle={styles.homeButtonText}
-          />
-        </View>
-      )}
+      <View style={styles.buttonContainer}>
+        <CustomButton
+          disabled={disabled}
+          onPress={startTheGame}
+          buttonText="Start Game"
+          style={[styles.startGameButton, disabled && {opacity: 0.5}]}
+          textStyle={styles.homeButtonText}
+        />
+        <CustomButton
+          disabled={disabled}
+          onPress={goBack}
+          buttonText="Home Page"
+          style={[styles.homeButton, disabled && styles.disabled]}
+          textStyle={styles.homeButtonText}
+        />
+      </View>
     </SafeAreaView>
   );
 };
