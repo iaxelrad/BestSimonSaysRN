@@ -5,7 +5,6 @@ import {routes} from '../../routes';
 import {CustomButton} from '../../shared/components/CustomButton';
 import {Header} from '../../shared/components/Header';
 import {IHighScore} from '../../shared/interfaces';
-import {Nav} from '../../shared/types';
 import {MAX_NUM_OF_RESULTS} from '../../shared/utils/constants';
 import {getHighScores, sortScores} from '../../shared/utils/helpers';
 
@@ -13,7 +12,7 @@ interface IProps {}
 
 const HighScoreScreen: FC<IProps> = () => {
   const [highScores, setHighScores] = useState<IHighScore[]>([]);
-  const navigation = useNavigation<Nav>();
+  const navigation = useNavigation();
   const goToHome = () => {
     navigation?.popToTop();
   };
@@ -24,7 +23,7 @@ const HighScoreScreen: FC<IProps> = () => {
       setHighScores(scores);
     };
     getScores();
-  }, [highScores]);
+  }, []);
 
   const mapScores = (
     {name, score}: {name: string; score: number},

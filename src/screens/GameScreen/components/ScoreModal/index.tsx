@@ -4,7 +4,6 @@ import {Modal, Text, TextInput, View} from 'react-native';
 import {routes} from '../../../../routes';
 import {CustomButton} from '../../../../shared/components/CustomButton';
 import {IHighScore} from '../../../../shared/interfaces';
-import {Nav} from '../../../../shared/types';
 import {MAX_NUM_OF_RESULTS} from '../../../../shared/utils/constants';
 import {setHighScores} from '../../../../shared/utils/helpers';
 import {styles} from './ScoreModal.styles';
@@ -17,7 +16,7 @@ interface IProps {
 }
 
 export const ScoreModal: FC<IProps> = props => {
-  const navigation = useNavigation<Nav>();
+  const navigation = useNavigation();
 
   const {showNewScorePopup, setShowNewScorePopup, score, highScores} = props;
   const [playerName, setPlayerName] = useState<string>('');

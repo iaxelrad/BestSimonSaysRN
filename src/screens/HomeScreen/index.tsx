@@ -4,12 +4,11 @@ import {routes} from '../../routes';
 import {CustomButton} from '../../shared/components/CustomButton';
 import {Header} from '../../shared/components/Header';
 import {useNavigation} from '@react-navigation/native';
-import {Nav} from '../../shared/types';
 
 interface IProps {}
 
 const HomeScreen: FC<IProps> = () => {
-  const navigation = useNavigation<Nav>();
+  const navigation = useNavigation();
 
   const goToNewGame = (): void => {
     navigation.navigate(routes.GAME);
