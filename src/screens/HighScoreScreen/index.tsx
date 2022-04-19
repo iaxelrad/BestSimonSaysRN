@@ -73,8 +73,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingVertical: 16,
-    marginHorizontal: 32,
-    backgroundColor: '#f1f1f1',
+    paddingHorizontal: 32,
+    backgroundColor: '#ebe9e1',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -92,5 +92,5 @@ const styles = StyleSheet.create({
     height: 2,
     backgroundColor: 'black',
   },
-  score: {paddingVertical: 10, fontSize: 20},
+  score: {paddingVertical: 10, fontSize: 20, color: 'black'},
 });
