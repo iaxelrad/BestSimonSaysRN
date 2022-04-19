@@ -19,11 +19,17 @@ const HighScoreScreen: FC<IProps> = () => {
   };
 
   useEffect(() => {
+    let isMounted = true;
     const getScores = async () => {
       const scores = await getHighScores();
-      setHighScores(scores);
+      if (isMounted) {
+        setHighScores(scores);
+      }
     };
     getScores();
+    return () => {
+      isMounted = false;
+    };
   }, [highScores]);
 
   const mapScores = (
