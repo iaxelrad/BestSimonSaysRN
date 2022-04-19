@@ -41,6 +41,7 @@ export const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
   },
+  background: {backgroundColor: '#ffffffbf', flex: 1},
   textStyle: {
     color: 'white',
     fontWeight: 'bold',

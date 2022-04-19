@@ -1,6 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {FC, useState} from 'react';
-import {Modal, Text, TextInput, View} from 'react-native';
+import {Modal, Pressable, Text, TextInput, View} from 'react-native';
 import {routes} from '../../../../routes';
 import {CustomButton} from '../../../../shared/components/CustomButton';
 import {IHighScore} from '../../../../shared/interfaces';
@@ -36,31 +36,39 @@ export const ScoreModal: FC<IProps> = props => {
 
   return (
     <Modal animationType="slide" transparent={true}>
-      <View style={styles.modalView}>
-        <Text style={styles.text}>Sorry but you loose!</Text>
-        <Text style={styles.text}>Your score is: {String(score)}</Text>
-        <Text style={styles.text}>Please enter you name</Text>
-        <View style={styles.inputContainer}>
-          <TextInput
-            style={styles.textInput}
-            placeholder={'Enter your name'}
-            value={playerName}
-            onChangeText={setPlayerName}
+      <Pressable
+        style={styles.background}
+        onPress={event => {
+          if (event.target === event.currentTarget) {
+            setShowNewScorePopup(!showNewScorePopup);
+          }
+        }}>
+        <View style={styles.modalView}>
+          <Text style={styles.text}>Sorry but you loose!</Text>
+          <Text style={styles.text}>Your score is: {String(score)}</Text>
+          <Text style={styles.text}>Please enter you name</Text>
+          <View style={styles.inputContainer}>
+            <TextInput
+              style={styles.textInput}
+              placeholder={'Enter your name'}
+              value={playerName}
+              onChangeText={setPlayerName}
+            />
+          </View>
+          <CustomButton
+            textStyle={styles.textStyle}
+            buttonText="Enter"
+            style={styles.enterButton}
+            onPress={onPressEnter}
+          />
+          <CustomButton
+            textStyle={styles.textStyle}
+            buttonText="Close Modal"
+            style={styles.closeButton}
+            onPress={onPressClose}
           />
         </View>
-        <CustomButton
-          textStyle={styles.textStyle}
-          buttonText="Enter"
-          style={styles.enterButton}
-          onPress={onPressEnter}
-        />
-        <CustomButton
-          textStyle={styles.textStyle}
-          buttonText="Close Modal"
-          style={styles.closeButton}
-          onPress={onPressClose}
-        />
-      </View>
+      </Pressable>
     </Modal>
   );
 };
