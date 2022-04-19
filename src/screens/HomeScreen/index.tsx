@@ -1,9 +1,10 @@
 import React, {FC} from 'react';
-import {SafeAreaView, StyleSheet, View} from 'react-native';
+import {Image, SafeAreaView, View} from 'react-native';
 import {routes} from '../../routes';
 import {CustomButton} from '../../shared/components/CustomButton';
 import {Header} from '../../shared/components/Header';
 import {useNavigation} from '@react-navigation/native';
+import {styles} from './HomeScreen.styles';
 
 interface IProps {}
 
@@ -21,6 +22,12 @@ const HomeScreen: FC<IProps> = () => {
   return (
     <SafeAreaView style={styles.container}>
       <Header title="Simon Says" />
+      <View style={styles.imageContainer}>
+        <Image
+          style={styles.image}
+          source={require('../../../assets/images/simon-says-logo.png')}
+        />
+      </View>
       <View style={styles.buttonContainer}>
         <CustomButton
           onPress={goToNewGame}
@@ -40,24 +47,3 @@ const HomeScreen: FC<IProps> = () => {
 };
 
 export default HomeScreen;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingVertical: 16,
-    marginHorizontal: 32,
-    backgroundColor: '#f1f1f1',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  buttonContainer: {flex: 1},
-  newGameButton: {
-    backgroundColor: 'green',
-  },
-  resultsButton: {
-    backgroundColor: 'red',
-  },
-  newGameText: {
-    color: 'white',
-  },
-});
