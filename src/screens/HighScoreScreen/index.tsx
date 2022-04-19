@@ -1,12 +1,13 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {FC, useEffect, useState} from 'react';
-import {SafeAreaView, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView, ScrollView, Text, View} from 'react-native';
 import {routes} from '../../routes';
 import {CustomButton} from '../../shared/components/CustomButton';
 import {Header} from '../../shared/components/Header';
 import {IHighScore} from '../../shared/interfaces';
 import {MAX_NUM_OF_RESULTS} from '../../shared/utils/constants';
 import {getHighScores, sortScores} from '../../shared/utils/helpers';
+import {styles} from './HighScoresScreen.styles';
 
 interface IProps {}
 
@@ -68,29 +69,3 @@ const HighScoreScreen: FC<IProps> = () => {
 };
 
 export default HighScoreScreen;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingVertical: 16,
-    paddingHorizontal: 32,
-    backgroundColor: '#ebe9e1',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  buttonContainer: {flex: 1},
-  homeButton: {
-    backgroundColor: 'red',
-  },
-  newGameButton: {
-    backgroundColor: 'green',
-  },
-  homeButtonText: {
-    color: 'white',
-  },
-  separator: {
-    height: 2,
-    backgroundColor: 'black',
-  },
-  score: {paddingVertical: 10, fontSize: 20, color: 'black'},
-});
