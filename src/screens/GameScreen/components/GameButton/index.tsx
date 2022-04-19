@@ -29,9 +29,8 @@ export const GameButton: FC<ButtonProps> = ({
       style={[
         styles.button,
         {
-          backgroundColor: `hsl(${color.color}, 100%, ${
-            activeButtonIndex === index ? '80%' : '50%'
-          })`,
+          backgroundColor:
+            activeButtonIndex === index ? color.lighterColor : color.color,
         },
       ]}
     />
