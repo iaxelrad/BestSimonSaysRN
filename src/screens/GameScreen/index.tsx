@@ -17,6 +17,7 @@ const GameScreen: FC<IProps> = () => {
   const [results, setResults] = useState<IHighScore[]>([]);
 
   const [showNewScorePopup, setShowNewScorePopup] = useState<boolean>(false);
+  const [isNewTopScore, setIsNewTopResult] = useState<boolean>(false);
 
   const [
     [activeButtonIndex, setActiveButtonIndex],
@@ -28,36 +29,60 @@ const GameScreen: FC<IProps> = () => {
     handlePlayerNoteInput,
   ] = useGame();
 
+  const checkScore = async (score: number) => {
+    const highScores = await getHighScores();
+    const lowestScore = highScores?.[0]?.score ?? 0;
+    if (score > lowestScore) {
+      return highScores;
+    }
+    return;
+  };
+
   useEffect(() => {
     const playEnded = async () => {
       if (playerLost) {
-        setShowNewScorePopup(true);
-        setResults(await getHighScores());
+        const retrieveHighScores = await checkScore(+gameLevel);
+        if (retrieveHighScores) {
+          setResults(retrieveHighScores);
+          setIsNewTopResult(true);
+          setShowNewScorePopup(true);
+        } else {
+          setIsNewTopResult(false);
+        }
       }
     };
     playEnded();
-  }, [playerLost]);
+  }, [playerLost, gameLevel]);
 
-  const goBack = () => {
-    navigation?.goBack();
+  const goHome = () => {
+    navigation?.popToTop();
   };
 
   const disabled = !!gameStarted;
   return (
     <WrapperComponent headerTitle="Let's Play">
-      {showNewScorePopup && (
-        <ScoreModal
-          highScores={results}
-          score={+gameLevel}
-          showNewScorePopup={showNewScorePopup}
-          setShowNewScorePopup={setShowNewScorePopup}
-        />
-      )}
-      {gameStarted && (
+      <ScoreModal
+        highScores={results}
+        score={+gameLevel}
+        showNewScorePopup={showNewScorePopup}
+        setShowNewScorePopup={setShowNewScorePopup}
+      />
+      {gameStarted && !playerLost && (
         <View style={styles.scoresContainer}>
           <Text style={styles.scoreText}>Game score: {gameLevel}</Text>
         </View>
       )}
+      {playerLost && !isNewTopScore ? (
+        <View style={styles.scoresContainer}>
+          <Text style={styles.scoreText}>
+            Game score: {gameLevel} Record wasn't broken
+          </Text>
+        </View>
+      ) : !gameStarted && isNewTopScore ? (
+        <View style={styles.scoresContainer}>
+          <Text style={styles.scoreText}>Game score: {gameLevel}</Text>
+        </View>
+      ) : null}
       <GameButtons
         setActiveButtonIndex={setActiveButtonIndex}
         handlePlayerNoteInput={handlePlayerNoteInput}
@@ -74,7 +99,7 @@ const GameScreen: FC<IProps> = () => {
         />
         <CustomButton
           disabled={disabled}
-          onPress={goBack}
+          onPress={goHome}
           buttonText="Home Page"
           style={[styles.homeButton, disabled && styles.disabled]}
           textStyle={styles.homeButtonText}
