@@ -2,22 +2,22 @@ import {useNavigation} from '@react-navigation/native';
 import React, {useEffect, useState} from 'react';
 import {View} from 'react-native';
 import {useGame} from '../../hooks/useGame';
-import {WrapperComponent} from '../../shared/components/WrapperComponent';
 import {CustomButton} from '../../shared/components/CustomButton';
-import {IHighScore} from '../../shared/interfaces';
-import {getHighScores} from '../../shared/utils/helpers';
 import {CustomText} from '../../shared/components/CustomText';
+import {WrapperComponent} from '../../shared/components/WrapperComponent';
+import {IHighScore} from '../../shared/interfaces';
 import {globalStyles} from '../../shared/styles/GlobalStyles';
-import {styles} from './GameScreen.styles';
+import {getHighScores} from '../../shared/utils/helpers';
 import {GameButtons} from './components/GameButtons';
 import {ScoreModal} from './components/ScoreModal';
+import {styles} from './GameScreen.styles';
 
 const GameScreen = () => {
   const navigation = useNavigation();
   const [results, setResults] = useState<IHighScore[]>([]);
 
   const [showNewScorePopup, setShowNewScorePopup] = useState<boolean>(false);
-  const [isNewTopScore, setIsNewTopResult] = useState<boolean>(false);
+  const [isNewTopScore, setIsNewTopResult] = useState<boolean>(true);
 
   const [
     [activeButtonIndex, setActiveButtonIndex],
@@ -44,7 +44,6 @@ const GameScreen = () => {
         const retrieveHighScores = await checkScore(+gameLevel);
         if (retrieveHighScores) {
           setResults(retrieveHighScores);
-          setIsNewTopResult(true);
           setShowNewScorePopup(true);
         } else {
           setIsNewTopResult(false);
