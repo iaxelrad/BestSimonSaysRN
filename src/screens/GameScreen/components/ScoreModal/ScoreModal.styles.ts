@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
     fontSize: 20,
     color: 'black',
   },
-  modalButtons: {flexDirection: 'row'},
+  modalButtons: {flex: 0, justifyContent: 'center'},
   modalView: {
     marginTop: deviceHeight * 0.33,
     marginHorizontal: deviceWidth * 0.05,

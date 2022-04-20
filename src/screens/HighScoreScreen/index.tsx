@@ -3,19 +3,24 @@ import React, {useEffect, useState} from 'react';
 import {ScrollView, View} from 'react-native';
 import {routes} from '../../routes';
 import {WrapperComponent} from '../../shared/components/WrapperComponent';
-import {CustomButton} from '../../shared/components/CustomButton';
 import {IHighScore} from '../../shared/interfaces';
 import {MAX_NUM_OF_RESULTS} from '../../shared/utils/constants';
 import {getHighScores, sortScores} from '../../shared/utils/helpers';
 import {CustomText} from '../../shared/components/CustomText';
-import {globalStyles} from '../../shared/styles/GlobalStyles';
 import {styles} from './HighScoresScreen.styles';
+import ButtonGroup from '../../shared/components/ButtonGroup';
 
 const HighScoreScreen = () => {
-  const [highScores, setHighScores] = useState<IHighScore[]>([]);
   const navigation = useNavigation();
+
+  const [highScores, setHighScores] = useState<IHighScore[]>([]);
+
   const goToHome = () => {
     navigation?.popToTop();
+  };
+
+  const goToNewGame = (): void => {
+    navigation.navigate(routes.GAME);
   };
 
   useEffect(() => {
@@ -68,22 +73,12 @@ const HighScoreScreen = () => {
   return (
     <WrapperComponent headerTitle="Top Scores">
       <View style={styles.contentContainer}>{renderContent()}</View>
-      <View style={globalStyles.buttonContainer}>
-        <CustomButton
-          onPress={() => {
-            navigation.navigate(routes.GAME);
-          }}
-          buttonText="New Game"
-          style={globalStyles.greenBackground}
-          textStyle={globalStyles.whiteText}
-        />
-        <CustomButton
-          onPress={goToHome}
-          buttonText="Home Page"
-          style={globalStyles.redBackground}
-          textStyle={globalStyles.whiteText}
-        />
-      </View>
+      <ButtonGroup
+        onPressGreenButton={goToNewGame}
+        greenButtonText="New Game"
+        onPressRedButton={goToHome}
+        redButtonText="Home Page"
+      />
     </WrapperComponent>
   );
 };

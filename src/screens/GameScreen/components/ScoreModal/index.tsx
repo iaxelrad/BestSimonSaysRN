@@ -2,10 +2,9 @@ import {useNavigation} from '@react-navigation/native';
 import React, {useEffect, useState} from 'react';
 import {Modal, Pressable, TextInput, View} from 'react-native';
 import {routes} from '../../../../routes';
-import {CustomButton} from '../../../../shared/components/CustomButton';
 import {CustomText} from '../../../../shared/components/CustomText';
+import ButtonGroup from '../../../../shared/components/ButtonGroup';
 import {IHighScore} from '../../../../shared/interfaces';
-import {globalStyles} from '../../../../shared/styles/GlobalStyles';
 import {MAX_NUM_OF_RESULTS} from '../../../../shared/utils/constants';
 import {setHighScores} from '../../../../shared/utils/helpers';
 import {styles} from './ScoreModal.styles';
@@ -73,17 +72,12 @@ export const ScoreModal = (props: IProps) => {
               onChangeText={setPlayerName}
             />
           </View>
-          <CustomButton
-            textStyle={globalStyles.whiteText}
-            buttonText="Enter"
-            style={globalStyles.greenBackground}
-            onPress={onPressEnter}
-          />
-          <CustomButton
-            textStyle={globalStyles.whiteText}
-            buttonText="Close Modal"
-            style={globalStyles.redBackground}
-            onPress={onPressClose}
+          <ButtonGroup
+            containerStyle={styles.modalButtons}
+            onPressGreenButton={onPressEnter}
+            greenButtonText="Enter"
+            onPressRedButton={onPressClose}
+            redButtonText="Close"
           />
         </View>
       </Pressable>

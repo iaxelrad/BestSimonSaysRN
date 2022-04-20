@@ -1,16 +1,13 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {useEffect, useState} from 'react';
-import {View} from 'react-native';
 import {useGame} from '../../hooks/useGame';
-import {CustomButton} from '../../shared/components/CustomButton';
 import {WrapperComponent} from '../../shared/components/WrapperComponent';
 import {IHighScore} from '../../shared/interfaces';
 import {getHighScores} from '../../shared/utils/helpers';
-import {globalStyles} from '../../shared/styles/GlobalStyles';
-import {styles} from './GameScreen.styles';
 import {GameButtons} from './components/GameButtons';
 import {GameState} from './components/GameState';
 import {ScoreModal} from './components/ScoreModal';
+import ButtonGroup from '../../shared/components/ButtonGroup';
 
 const GameScreen = () => {
   const navigation = useNavigation();
@@ -80,22 +77,13 @@ const GameScreen = () => {
         disabled={(!gameStarted as boolean) || (!playersTurn as boolean)}
         activeButtonIndex={activeButtonIndex as number}
       />
-      <View style={globalStyles.buttonContainer}>
-        <CustomButton
-          disabled={disabled}
-          onPress={startTheGame as () => Promise<void>}
-          buttonText="Start Game"
-          style={[globalStyles.greenBackground, disabled && styles.disabled]}
-          textStyle={globalStyles.whiteText}
-        />
-        <CustomButton
-          disabled={disabled}
-          onPress={goHome}
-          buttonText="Home Page"
-          style={[globalStyles.redBackground, disabled && styles.disabled]}
-          textStyle={globalStyles.whiteText}
-        />
-      </View>
+      <ButtonGroup
+        onPressGreenButton={startTheGame as () => Promise<void>}
+        greenButtonText="Start Game"
+        onPressRedButton={goHome}
+        redButtonText="Home Page"
+        disabled={!!gameStarted}
+      />
     </WrapperComponent>
   );
 };
