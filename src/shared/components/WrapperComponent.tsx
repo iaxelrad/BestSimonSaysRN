@@ -1,7 +1,7 @@
 import React, {ReactNode} from 'react';
-import {SafeAreaView} from 'react-native';
+import {SafeAreaView, StyleSheet} from 'react-native';
 import {globalStyles} from '../styles/GlobalStyles';
-import {Header} from './Header';
+import {CustomText} from './CustomText';
 
 interface IProps {
   headerTitle: string;
@@ -11,8 +11,14 @@ interface IProps {
 export const WrapperComponent = ({children, headerTitle}: IProps) => {
   return (
     <SafeAreaView style={globalStyles.container}>
-      <Header title={headerTitle} />
+      <CustomText h1 center style={styles.header}>
+        {headerTitle}
+      </CustomText>
       {children}
     </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  header: {marginTop: 8},
+});

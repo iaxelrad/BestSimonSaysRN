@@ -72,7 +72,7 @@ const HighScoreScreen = () => {
 
   return (
     <WrapperComponent headerTitle="Top Scores">
-      <View style={styles.contentContainer}>{renderContent()}</View>
+      {renderContent()}
       <ButtonGroup
         onPressGreenButton={goToNewGame}
         greenButtonText="New Game"

@@ -9,7 +9,7 @@ export const globalStyles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  buttonContainer: {flex: 1, justifyContent: 'flex-end'},
+  buttonContainer: {flex: 1, justifyContent: 'flex-end', marginBottom: 16},
   greenBackground: {backgroundColor: 'green'},
   redBackground: {backgroundColor: 'red'},
   whiteText: {color: 'white'},

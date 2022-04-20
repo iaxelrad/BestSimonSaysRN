@@ -6,10 +6,11 @@ interface CustomTextProps extends TextProps {
   h2?: boolean;
   center?: boolean;
   style?: TextStyle;
+  children: string;
 }
 
 export const CustomText = (props: CustomTextProps) => {
-  const {h1, h2, center, style} = props;
+  const {h1, h2, center, style, children} = props;
 
   let textStyle = styles.default;
   if (h1) {
@@ -19,7 +20,7 @@ export const CustomText = (props: CustomTextProps) => {
   }
   return (
     <Text {...props} style={[textStyle, style, center && styles.center]}>
-      {props.children}
+      {children}
     </Text>
   );
 };
