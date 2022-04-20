@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
   h2: {
     color: 'black',
     fontWeight: '700',
-    fontSize: 18,
+    fontSize: 24,
   },
   center: {textAlign: 'center'},
   default: {
