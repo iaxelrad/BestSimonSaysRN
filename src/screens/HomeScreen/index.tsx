@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React from 'react';
 import {Image, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {CustomButton} from '../../shared/components/CustomButton';
@@ -7,9 +7,7 @@ import {WrapperComponent} from '../../shared/components/WrapperComponent';
 import {globalStyles} from '../../shared/styles/GlobalStyles';
 import {styles} from './HomeScreen.styles';
 
-interface IProps {}
-
-const HomeScreen: FC<IProps> = () => {
+const HomeScreen = () => {
   const navigation = useNavigation();
 
   const goToNewGame = (): void => {

@@ -1,5 +1,5 @@
-import React, {FC} from 'react';
-import {Pressable, TouchableOpacity} from 'react-native';
+import React from 'react';
+import {Pressable} from 'react-native';
 import {GameButtonModel} from '../../../../shared/utils/constants';
 import {styles} from './GameButton.styles';
 
@@ -12,14 +12,14 @@ interface ButtonProps {
   handlePlayerNoteInput: (note: number) => void;
 }
 
-export const GameButton: FC<ButtonProps> = ({
+export const GameButton = ({
   color,
   setActiveButtonIndex,
   disabled,
   activeButtonIndex,
   index,
   handlePlayerNoteInput,
-}) => {
+}: ButtonProps) => {
   return (
     <Pressable
       disabled={disabled}

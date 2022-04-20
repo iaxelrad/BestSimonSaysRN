@@ -1,5 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {FC, useState} from 'react';
+import React, {useState} from 'react';
 import {Modal, Pressable, TextInput, View} from 'react-native';
 import {routes} from '../../../../routes';
 import {CustomButton} from '../../../../shared/components/CustomButton';
@@ -16,7 +16,7 @@ interface IProps {
   highScores: IHighScore[];
 }
 
-export const ScoreModal: FC<IProps> = props => {
+export const ScoreModal = (props: IProps) => {
   const navigation = useNavigation();
 
   const {showNewScorePopup, setShowNewScorePopup, score, highScores} = props;

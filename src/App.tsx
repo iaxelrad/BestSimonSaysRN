@@ -1,19 +1,17 @@
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import React, {FC} from 'react';
+import React from 'react';
 import {routes} from './routes';
 import GameScreen from './screens/GameScreen';
 import HighScoreScreen from './screens/HighScoreScreen';
 import HomeScreen from './screens/HomeScreen';
-
-interface IProps {}
 
 const Stack = createNativeStackNavigator();
 const screenOptions = {
   headerShown: false,
 };
 
-const App: FC<IProps> = () => {
+const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator

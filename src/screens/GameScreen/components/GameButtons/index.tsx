@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React from 'react';
 import {View} from 'react-native';
 import {gameButtons} from '../../../../shared/utils/constants';
 import {GameButton} from '../GameButton';
@@ -11,7 +11,7 @@ interface IProps {
   activeButtonIndex: number;
 }
 
-export const GameButtons: FC<IProps> = props => {
+export const GameButtons = (props: IProps) => {
   const {
     setActiveButtonIndex,
     handlePlayerNoteInput,

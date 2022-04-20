@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React from 'react';
 import {StyleSheet, TextStyle, TouchableOpacity, ViewStyle} from 'react-native';
 import {CustomText} from './CustomText';
 
@@ -10,13 +10,13 @@ interface ButtonProps {
   disabled?: boolean;
 }
 
-export const CustomButton: FC<ButtonProps> = ({
+export const CustomButton = ({
   onPress,
   style,
   textStyle,
   buttonText,
   disabled,
-}) => {
+}: ButtonProps) => {
   return (
     <TouchableOpacity
       disabled={disabled}

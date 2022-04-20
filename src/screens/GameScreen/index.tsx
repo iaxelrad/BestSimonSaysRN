@@ -1,5 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {FC, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View} from 'react-native';
 import {useGame} from '../../hooks/useGame';
 import {WrapperComponent} from '../../shared/components/WrapperComponent';
@@ -12,9 +12,7 @@ import {styles} from './GameScreen.styles';
 import {GameButtons} from './components/GameButtons';
 import {ScoreModal} from './components/ScoreModal';
 
-interface IProps {}
-
-const GameScreen: FC<IProps> = () => {
+const GameScreen = () => {
   const navigation = useNavigation();
   const [results, setResults] = useState<IHighScore[]>([]);
 

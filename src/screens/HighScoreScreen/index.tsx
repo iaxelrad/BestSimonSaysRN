@@ -1,5 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {FC, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {ScrollView, View} from 'react-native';
 import {routes} from '../../routes';
 import {WrapperComponent} from '../../shared/components/WrapperComponent';
@@ -7,12 +7,11 @@ import {CustomButton} from '../../shared/components/CustomButton';
 import {IHighScore} from '../../shared/interfaces';
 import {MAX_NUM_OF_RESULTS} from '../../shared/utils/constants';
 import {getHighScores, sortScores} from '../../shared/utils/helpers';
-import {styles} from './HighScoresScreen.styles';
 import {CustomText} from '../../shared/components/CustomText';
+import {globalStyles} from '../../shared/styles/GlobalStyles';
+import {styles} from './HighScoresScreen.styles';
 
-interface IProps {}
-
-const HighScoreScreen: FC<IProps> = () => {
+const HighScoreScreen = () => {
   const [highScores, setHighScores] = useState<IHighScore[]>([]);
   const navigation = useNavigation();
   const goToHome = () => {
@@ -68,21 +67,21 @@ const HighScoreScreen: FC<IProps> = () => {
 
   return (
     <WrapperComponent headerTitle="Top Scores">
-      <View style={{flex: 1}}>{renderContent()}</View>
-      <View>
+      <View style={styles.contentContainer}>{renderContent()}</View>
+      <View style={globalStyles.buttonContainer}>
         <CustomButton
           onPress={() => {
             navigation.navigate(routes.GAME);
           }}
           buttonText="New Game"
-          style={styles.newGameButton}
-          textStyle={styles.homeButtonText}
+          style={globalStyles.greenBackground}
+          textStyle={globalStyles.whiteText}
         />
         <CustomButton
           onPress={goToHome}
           buttonText="Home Page"
-          style={styles.homeButton}
-          textStyle={styles.homeButtonText}
+          style={globalStyles.redBackground}
+          textStyle={globalStyles.whiteText}
         />
       </View>
     </WrapperComponent>
