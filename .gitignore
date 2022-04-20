@@ -29,6 +29,9 @@ build/
 local.properties
 *.iml
 *.hprof
+android/app/release/output-metadata.json
+android/app/release/app-release.apk
+android/simon_says
 
 # node.js
 #
@@ -58,3 +61,4 @@ buck-out/
 
 # CocoaPods
 /ios/Pods/
+
