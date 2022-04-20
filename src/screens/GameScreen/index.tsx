@@ -8,6 +8,7 @@ import {GameButtons} from './components/GameButtons';
 import {GameState} from './components/GameState';
 import {ScoreModal} from './components/ScoreModal';
 import ButtonGroup from '../../shared/components/ButtonGroup';
+import {MAX_NUM_OF_RESULTS} from '../../shared/utils/constants';
 
 const GameScreen = () => {
   const navigation = useNavigation();
@@ -28,7 +29,7 @@ const GameScreen = () => {
 
   const checkScore = async (score: number) => {
     const highScores = await getHighScores();
-    const lowestScore = highScores?.[0]?.score ?? 0;
+    const lowestScore = highScores?.[MAX_NUM_OF_RESULTS - 1]?.score ?? 0;
     if (score > lowestScore) {
       return highScores;
     }
@@ -54,7 +55,6 @@ const GameScreen = () => {
     navigation?.popToTop();
   };
 
-  const disabled = !!gameStarted;
   return (
     <WrapperComponent headerTitle="Let's Play">
       <ScoreModal
