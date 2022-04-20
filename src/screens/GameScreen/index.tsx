@@ -3,14 +3,14 @@ import React, {useEffect, useState} from 'react';
 import {View} from 'react-native';
 import {useGame} from '../../hooks/useGame';
 import {CustomButton} from '../../shared/components/CustomButton';
-import {CustomText} from '../../shared/components/CustomText';
 import {WrapperComponent} from '../../shared/components/WrapperComponent';
 import {IHighScore} from '../../shared/interfaces';
-import {globalStyles} from '../../shared/styles/GlobalStyles';
 import {getHighScores} from '../../shared/utils/helpers';
-import {GameButtons} from './components/GameButtons';
-import {ScoreModal} from './components/ScoreModal';
+import {globalStyles} from '../../shared/styles/GlobalStyles';
 import {styles} from './GameScreen.styles';
+import {GameButtons} from './components/GameButtons';
+import {GameState} from './components/GameState';
+import {ScoreModal} from './components/ScoreModal';
 
 const GameScreen = () => {
   const navigation = useNavigation();
@@ -66,26 +66,12 @@ const GameScreen = () => {
         showNewScorePopup={showNewScorePopup}
         setShowNewScorePopup={setShowNewScorePopup}
       />
-      {gameStarted && !playerLost && (
-        <View style={styles.scoresContainer}>
-          <CustomText center h2 style={styles.scoreText}>
-            Game score: {gameLevel}
-          </CustomText>
-        </View>
-      )}
-      {playerLost && !isNewTopScore ? (
-        <View style={styles.scoresContainer}>
-          <CustomText center h2 style={styles.scoreText}>
-            Game score: {gameLevel} Record wasn't broken
-          </CustomText>
-        </View>
-      ) : !gameStarted && isNewTopScore ? (
-        <View style={styles.scoresContainer}>
-          <CustomText center h2 style={styles.scoreText}>
-            Game score: {gameLevel}
-          </CustomText>
-        </View>
-      ) : null}
+      <GameState
+        gameStarted={gameStarted as boolean}
+        playerLost={playerLost as boolean}
+        isNewTopScore={isNewTopScore as boolean}
+        gameLevel={gameLevel as number}
+      />
       <GameButtons
         setActiveButtonIndex={setActiveButtonIndex as (index: number) => void}
         handlePlayerNoteInput={
