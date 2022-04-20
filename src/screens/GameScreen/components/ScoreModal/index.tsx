@@ -35,9 +35,9 @@ export const ScoreModal: FC<IProps> = props => {
     setShowNewScorePopup(!showNewScorePopup);
   };
 
-  /* if (!showNewScorePopup) {
+  if (!showNewScorePopup) {
     return null;
-  } */
+  }
 
   return (
     <Modal animationType="slide" transparent={true}>
