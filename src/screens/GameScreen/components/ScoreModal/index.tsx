@@ -1,5 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Modal, Pressable, TextInput, View} from 'react-native';
 import {routes} from '../../../../routes';
 import {CustomButton} from '../../../../shared/components/CustomButton';
@@ -31,6 +31,12 @@ export const ScoreModal = (props: IProps) => {
     setShowNewScorePopup(!showNewScorePopup);
     navigation.navigate(routes.HIGH_SCORES);
   };
+
+  useEffect(() => {
+    if (playerName.length > 0) {
+      setPlayerName('');
+    }
+  }, []);
 
   const onPressClose = () => {
     setShowNewScorePopup(!showNewScorePopup);
