@@ -6,19 +6,19 @@ export interface GameButtonModel {
 }
 export const gameButtons: GameButtonModel[] = [
   {
-    color: 'green',
+    color: '#66ddfb',
     sound: new Sound('do_sound.mp3', Sound.MAIN_BUNDLE),
   },
   {
-    color: 'red',
+    color: '#eded4e',
     sound: new Sound('re_sound.mp3', Sound.MAIN_BUNDLE),
   },
   {
-    color: 'blue',
+    color: '#ea3338',
     sound: new Sound('fa_sound.mp3', Sound.MAIN_BUNDLE),
   },
   {
-    color: 'orange',
+    color: '#75fb6e',
     sound: new Sound('mi_sound.mp3', Sound.MAIN_BUNDLE),
   },
 ];
