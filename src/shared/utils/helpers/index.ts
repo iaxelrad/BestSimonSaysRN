@@ -26,9 +26,7 @@ export const sortScores = (a: IHighScore, b: IHighScore) => b.score - a.score;
 export const getHighScores = async () => {
   try {
     const jsonValue = await AsyncStorage.getItem('High Scores');
-    return jsonValue != null
-      ? (JSON.parse(jsonValue) as IHighScore[])
-      : ([] as IHighScore[]);
+    return jsonValue != null ? JSON.parse(jsonValue) : [];
   } catch (e) {
     console.log('Error reading high scores', e);
   }
