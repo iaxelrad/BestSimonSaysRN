@@ -47,15 +47,28 @@ const HighScoreScreen: FC<IProps> = () => {
     );
   };
 
-  const renderContent = () => (
-    <ScrollView bounces={false}>
-      {highScores.sort(sortScores).slice(0, MAX_NUM_OF_RESULTS).map(mapScores)}
-    </ScrollView>
-  );
+  const renderContent = () => {
+    if (highScores.length === 0) {
+      return (
+        <CustomText h2 center style={styles.noScores}>
+          There are currently no scores, You can be the first to be on the
+          board!
+        </CustomText>
+      );
+    }
+    return (
+      <ScrollView bounces={false}>
+        {highScores
+          .sort(sortScores)
+          .slice(0, MAX_NUM_OF_RESULTS)
+          .map(mapScores)}
+      </ScrollView>
+    );
+  };
 
   return (
     <WrapperComponent headerTitle="Top Scores">
-      {renderContent()}
+      <View style={{flex: 1}}>{renderContent()}</View>
       <View>
         <CustomButton
           onPress={() => {
