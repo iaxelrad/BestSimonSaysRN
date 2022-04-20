@@ -1,5 +1,6 @@
 import React, {FC} from 'react';
-import {SafeAreaView, StyleSheet} from 'react-native';
+import {SafeAreaView} from 'react-native';
+import {globalStyles} from '../styles/GlobalStyles';
 import {Header} from './Header';
 
 interface IProps {
@@ -8,20 +9,9 @@ interface IProps {
 
 export const WrapperComponent: FC<IProps> = ({children, headerTitle}) => {
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={globalStyles.container}>
       <Header title={headerTitle} />
       {children}
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingVertical: 16,
-    paddingHorizontal: 32,
-    backgroundColor: '#ebe9e1',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

@@ -6,10 +6,11 @@ import {WrapperComponent} from '../../shared/components/WrapperComponent';
 import {CustomButton} from '../../shared/components/CustomButton';
 import {IHighScore} from '../../shared/interfaces';
 import {getHighScores} from '../../shared/utils/helpers';
+import {CustomText} from '../../shared/components/CustomText';
+import {globalStyles} from '../../shared/styles/GlobalStyles';
+import {styles} from './GameScreen.styles';
 import {GameButtons} from './components/GameButtons';
 import {ScoreModal} from './components/ScoreModal';
-import {styles} from './GameScreen.styles';
-import {CustomText} from '../../shared/components/CustomText';
 
 interface IProps {}
 
@@ -94,20 +95,20 @@ const GameScreen: FC<IProps> = () => {
         disabled={!gameStarted || !playersTurn}
         activeButtonIndex={activeButtonIndex}
       />
-      <View style={styles.buttonContainer}>
+      <View style={globalStyles.buttonContainer}>
         <CustomButton
           disabled={disabled}
           onPress={startTheGame}
           buttonText="Start Game"
-          style={[styles.startGameButton, disabled && {opacity: 0.5}]}
-          textStyle={styles.homeButtonText}
+          style={[globalStyles.greenBackground, disabled && styles.disabled]}
+          textStyle={globalStyles.whiteText}
         />
         <CustomButton
           disabled={disabled}
           onPress={goHome}
           buttonText="Home Page"
-          style={[styles.homeButton, disabled && styles.disabled]}
-          textStyle={styles.homeButtonText}
+          style={[globalStyles.redBackground, disabled && styles.disabled]}
+          textStyle={globalStyles.whiteText}
         />
       </View>
     </WrapperComponent>

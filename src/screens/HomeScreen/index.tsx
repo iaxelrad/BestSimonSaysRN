@@ -1,10 +1,11 @@
 import React, {FC} from 'react';
 import {Image, View} from 'react-native';
-import {routes} from '../../routes';
-import {CustomButton} from '../../shared/components/CustomButton';
 import {useNavigation} from '@react-navigation/native';
-import {styles} from './HomeScreen.styles';
+import {CustomButton} from '../../shared/components/CustomButton';
+import {routes} from '../../routes';
 import {WrapperComponent} from '../../shared/components/WrapperComponent';
+import {globalStyles} from '../../shared/styles/GlobalStyles';
+import {styles} from './HomeScreen.styles';
 
 interface IProps {}
 
@@ -27,18 +28,18 @@ const HomeScreen: FC<IProps> = () => {
           source={require('../../../assets/images/simon-says-logo.png')}
         />
       </View>
-      <View style={styles.buttonContainer}>
+      <View style={globalStyles.buttonContainer}>
         <CustomButton
           onPress={goToNewGame}
           buttonText="New Game"
-          style={styles.newGameButton}
-          textStyle={styles.newGameText}
+          style={globalStyles.greenBackground}
+          textStyle={globalStyles.whiteText}
         />
         <CustomButton
           onPress={goToResults}
           buttonText="High Scores"
-          style={styles.resultsButton}
-          textStyle={styles.newGameText}
+          style={globalStyles.redBackground}
+          textStyle={globalStyles.whiteText}
         />
       </View>
     </WrapperComponent>
