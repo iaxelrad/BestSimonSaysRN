@@ -29,7 +29,7 @@ export const useGame = () => {
     setActiveButtonIndex(noteIndex);
     gameButtons[noteIndex].sound.stop();
     gameButtons[noteIndex].sound.play();
-    await sleep(4500 / GAME_SPEED);
+    await sleep(4500 / GAME_SPEED, gameLevel);
     setActiveButtonIndex(-1);
     await sleep(2000 / GAME_SPEED);
   };

@@ -1,8 +1,20 @@
 import {IHighScore} from '../../interfaces';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export const sleep = (time: number) =>
-  new Promise(resolve => setTimeout(resolve, time));
+export const sleep = (time: number, gameLevel?: number) => {
+  if (gameLevel) {
+    if (gameLevel > 0 && gameLevel < 3) {
+      return new Promise(resolve => setTimeout(resolve, time));
+    } else if (gameLevel >= 3 && gameLevel < 6) {
+      return new Promise(resolve => setTimeout(resolve, time * 0.9));
+    } else if (gameLevel >= 6 && gameLevel < 9) {
+      return new Promise(resolve => setTimeout(resolve, time * 0.75));
+    } else {
+      return new Promise(resolve => setTimeout(resolve, time * 0.5));
+    }
+  }
+  return new Promise(resolve => setTimeout(resolve, time));
+};
 
 export const getRandomInt = (min: number, max: number) => {
   const _min = Math.ceil(min);
