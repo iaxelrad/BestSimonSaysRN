@@ -4,18 +4,25 @@ const {height: deviceHeight, width: deviceWidth} = Dimensions.get('window');
 
 export const styles = StyleSheet.create({
   text: {
-    textAlign: 'center',
-    color: 'black',
+    fontSize: 20,
+    paddingVertical: 4,
   },
   inputContainer: {
+    marginVertical: 8,
     backgroundColor: 'white',
     borderWidth: 1,
     borderRadius: 50,
     height: 40,
     borderColor: 'gray',
-    width: deviceWidth / 2,
+    width: 250,
   },
-  textInput: {flex: 1, marginHorizontal: 15, textAlign: 'center'},
+  textInput: {
+    flex: 1,
+    marginHorizontal: 15,
+    textAlign: 'center',
+    fontSize: 20,
+    color: 'black',
+  },
   modalButtons: {
     flexDirection: 'row',
   },

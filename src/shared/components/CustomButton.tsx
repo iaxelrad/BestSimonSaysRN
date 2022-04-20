@@ -1,11 +1,6 @@
 import React, {FC} from 'react';
-import {
-  StyleSheet,
-  Text,
-  TextStyle,
-  TouchableOpacity,
-  ViewStyle,
-} from 'react-native';
+import {StyleSheet, TextStyle, TouchableOpacity, ViewStyle} from 'react-native';
+import {CustomText} from './CustomText';
 
 interface ButtonProps {
   onPress: () => void;
@@ -27,7 +22,9 @@ export const CustomButton: FC<ButtonProps> = ({
       disabled={disabled}
       style={[styles.button, style]}
       onPress={onPress}>
-      <Text style={[styles.text, textStyle]}>{buttonText}</Text>
+      <CustomText center style={textStyle}>
+        {buttonText}
+      </CustomText>
     </TouchableOpacity>
   );
 };
@@ -39,5 +36,4 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     marginVertical: 8,
   },
-  text: {fontSize: 16, textAlign: 'center'},
 });

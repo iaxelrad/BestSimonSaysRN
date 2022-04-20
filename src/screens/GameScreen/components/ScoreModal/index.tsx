@@ -1,8 +1,9 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {FC, useState} from 'react';
-import {Modal, Pressable, Text, TextInput, View} from 'react-native';
+import {Modal, Pressable, TextInput, View} from 'react-native';
 import {routes} from '../../../../routes';
 import {CustomButton} from '../../../../shared/components/CustomButton';
+import {CustomText} from '../../../../shared/components/CustomText';
 import {IHighScore} from '../../../../shared/interfaces';
 import {MAX_NUM_OF_RESULTS} from '../../../../shared/utils/constants';
 import {setHighScores} from '../../../../shared/utils/helpers';
@@ -34,9 +35,9 @@ export const ScoreModal: FC<IProps> = props => {
     setShowNewScorePopup(!showNewScorePopup);
   };
 
-  if (!showNewScorePopup) {
+  /* if (!showNewScorePopup) {
     return null;
-  }
+  } */
 
   return (
     <Modal animationType="slide" transparent={true}>
@@ -48,9 +49,15 @@ export const ScoreModal: FC<IProps> = props => {
           }
         }}>
         <View style={styles.modalView}>
-          <Text style={styles.text}>You Scored a New Record!</Text>
-          <Text style={styles.text}>Your score is: {String(score)}</Text>
-          <Text style={styles.text}>Please enter you name</Text>
+          <CustomText center style={styles.text}>
+            You Scored a New Record!
+          </CustomText>
+          <CustomText center style={styles.text}>
+            Your score is: {String(score)}
+          </CustomText>
+          <CustomText center style={styles.text}>
+            Please enter you name
+          </CustomText>
           <View style={styles.inputContainer}>
             <TextInput
               style={styles.textInput}

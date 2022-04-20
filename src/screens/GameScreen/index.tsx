@@ -1,6 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {FC, useEffect, useState} from 'react';
-import {Text, View} from 'react-native';
+import {View} from 'react-native';
 import {useGame} from '../../hooks/useGame';
 import {WrapperComponent} from '../../shared/components/WrapperComponent';
 import {CustomButton} from '../../shared/components/CustomButton';
@@ -9,6 +9,7 @@ import {getHighScores} from '../../shared/utils/helpers';
 import {GameButtons} from './components/GameButtons';
 import {ScoreModal} from './components/ScoreModal';
 import {styles} from './GameScreen.styles';
+import {CustomText} from '../../shared/components/CustomText';
 
 interface IProps {}
 
@@ -69,18 +70,22 @@ const GameScreen: FC<IProps> = () => {
       />
       {gameStarted && !playerLost && (
         <View style={styles.scoresContainer}>
-          <Text style={styles.scoreText}>Game score: {gameLevel}</Text>
+          <CustomText center style={styles.scoreText}>
+            Game score: {gameLevel}
+          </CustomText>
         </View>
       )}
       {playerLost && !isNewTopScore ? (
         <View style={styles.scoresContainer}>
-          <Text style={styles.scoreText}>
+          <CustomText center style={styles.scoreText}>
             Game score: {gameLevel} Record wasn't broken
-          </Text>
+          </CustomText>
         </View>
       ) : !gameStarted && isNewTopScore ? (
         <View style={styles.scoresContainer}>
-          <Text style={styles.scoreText}>Game score: {gameLevel}</Text>
+          <CustomText center style={styles.scoreText}>
+            Game score: {gameLevel}
+          </CustomText>
         </View>
       ) : null}
       <GameButtons

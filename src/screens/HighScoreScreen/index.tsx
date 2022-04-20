@@ -1,6 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {FC, useEffect, useState} from 'react';
-import {ScrollView, Text, View} from 'react-native';
+import {ScrollView, View} from 'react-native';
 import {routes} from '../../routes';
 import {WrapperComponent} from '../../shared/components/WrapperComponent';
 import {CustomButton} from '../../shared/components/CustomButton';
@@ -8,6 +8,7 @@ import {IHighScore} from '../../shared/interfaces';
 import {MAX_NUM_OF_RESULTS} from '../../shared/utils/constants';
 import {getHighScores, sortScores} from '../../shared/utils/helpers';
 import {styles} from './HighScoresScreen.styles';
+import {CustomText} from '../../shared/components/CustomText';
 
 interface IProps {}
 
@@ -36,16 +37,18 @@ const HighScoreScreen: FC<IProps> = () => {
     {name, score}: {name: string; score: number},
     index: number,
   ) => {
-    return [
-      index > 0 && <View key={`${name}-separator`} style={styles.separator} />,
-      <Text key={name} style={styles.score}>{`${
-        index + 1
-      }. ${name} - score: ${score}`}</Text>,
-    ];
+    return (
+      <View key={`${name}-separator`}>
+        {index > 0 && <View style={styles.separator} />}
+        <CustomText key={name} style={styles.score}>{`${
+          index + 1
+        }. ${name} - score: ${score}`}</CustomText>
+      </View>
+    );
   };
 
   const renderContent = () => (
-    <ScrollView>
+    <ScrollView bounces={false}>
       {highScores.sort(sortScores).slice(0, MAX_NUM_OF_RESULTS).map(mapScores)}
     </ScrollView>
   );

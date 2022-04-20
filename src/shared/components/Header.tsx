@@ -1,5 +1,6 @@
 import React, {FC} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {View} from 'react-native';
+import {CustomText} from './CustomText';
 
 interface HeaderProps {
   title: string;
@@ -8,17 +9,9 @@ interface HeaderProps {
 export const Header: FC<HeaderProps> = ({title}) => {
   return (
     <View>
-      <Text style={styles.title}>{title}</Text>
+      <CustomText h1 center>
+        {title}
+      </CustomText>
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  title: {
-    fontSize: 32,
-    color: 'black',
-    textAlign: 'center',
-    fontWeight: 'bold',
-    marginBottom: 16,
-  },
-});

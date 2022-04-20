@@ -24,7 +24,6 @@ export const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     color: 'red',
-    textAlign: 'center',
     width: 200,
   },
   startGameButton: {backgroundColor: 'green'},
