@@ -1,10 +1,16 @@
 import React from 'react';
-import {StyleSheet, TextStyle, TouchableOpacity, ViewStyle} from 'react-native';
+import {
+  StyleProp,
+  StyleSheet,
+  TextStyle,
+  TouchableOpacity,
+  ViewStyle,
+} from 'react-native';
 import {CustomText} from './CustomText';
 
 interface ButtonProps {
   onPress: () => void;
-  style?: ViewStyle;
+  style?: StyleProp<ViewStyle>;
   buttonText: string;
   textStyle?: TextStyle;
   disabled?: boolean;
