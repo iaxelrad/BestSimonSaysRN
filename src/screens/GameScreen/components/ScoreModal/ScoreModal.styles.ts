@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderWidth: 1,
     borderRadius: 50,
-    height: 40,
+    height: 50,
     borderColor: 'gray',
     width: 250,
   },
