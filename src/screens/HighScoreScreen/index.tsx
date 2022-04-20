@@ -42,9 +42,9 @@ const HighScoreScreen = () => {
     index: number,
   ) => {
     return (
-      <View key={`${name}-separator`}>
+      <View key={`${name}-separator-${index}`}>
         {index > 0 && <View style={styles.separator} />}
-        <CustomText key={name} style={styles.score}>{`${
+        <CustomText style={styles.score}>{`${
           index + 1
         }. ${name} - score: ${score}`}</CustomText>
       </View>
