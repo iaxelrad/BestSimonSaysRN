@@ -3,10 +3,7 @@ import {StyleSheet, Dimensions} from 'react-native';
 const {height: deviceHeight, width: deviceWidth} = Dimensions.get('window');
 
 export const styles = StyleSheet.create({
-  text: {
-    fontSize: 20,
-    paddingVertical: 4,
-  },
+  text: {fontSize: 20, paddingVertical: 4},
   inputContainer: {
     marginVertical: 8,
     backgroundColor: 'white',
@@ -23,15 +20,7 @@ export const styles = StyleSheet.create({
     fontSize: 20,
     color: 'black',
   },
-  modalButtons: {
-    flexDirection: 'row',
-  },
-  enterButton: {
-    backgroundColor: 'green',
-  },
-  closeButton: {
-    backgroundColor: 'red',
-  },
+  modalButtons: {flexDirection: 'row'},
   modalView: {
     marginTop: deviceHeight * 0.33,
     marginHorizontal: deviceWidth * 0.05,
@@ -40,18 +29,10 @@ export const styles = StyleSheet.create({
     padding: deviceWidth * 0.05,
     alignItems: 'center',
     shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
   },
   background: {backgroundColor: '#ffffffbf', flex: 1},
-  textStyle: {
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
 });

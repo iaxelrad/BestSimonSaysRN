@@ -5,6 +5,7 @@ import {routes} from '../../../../routes';
 import {CustomButton} from '../../../../shared/components/CustomButton';
 import {CustomText} from '../../../../shared/components/CustomText';
 import {IHighScore} from '../../../../shared/interfaces';
+import {globalStyles} from '../../../../shared/styles/GlobalStyles';
 import {MAX_NUM_OF_RESULTS} from '../../../../shared/utils/constants';
 import {setHighScores} from '../../../../shared/utils/helpers';
 import {styles} from './ScoreModal.styles';
@@ -67,15 +68,15 @@ export const ScoreModal = (props: IProps) => {
             />
           </View>
           <CustomButton
-            textStyle={styles.textStyle}
+            textStyle={globalStyles.whiteText}
             buttonText="Enter"
-            style={styles.enterButton}
+            style={globalStyles.greenBackground}
             onPress={onPressEnter}
           />
           <CustomButton
-            textStyle={styles.textStyle}
+            textStyle={globalStyles.whiteText}
             buttonText="Close Modal"
-            style={styles.closeButton}
+            style={globalStyles.redBackground}
             onPress={onPressClose}
           />
         </View>
