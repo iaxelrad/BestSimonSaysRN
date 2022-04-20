@@ -69,20 +69,20 @@ const GameScreen = () => {
       />
       {gameStarted && !playerLost && (
         <View style={styles.scoresContainer}>
-          <CustomText center style={styles.scoreText}>
+          <CustomText center h2 style={styles.scoreText}>
             Game score: {gameLevel}
           </CustomText>
         </View>
       )}
       {playerLost && !isNewTopScore ? (
         <View style={styles.scoresContainer}>
-          <CustomText center style={styles.scoreText}>
+          <CustomText center h2 style={styles.scoreText}>
             Game score: {gameLevel} Record wasn't broken
           </CustomText>
         </View>
       ) : !gameStarted && isNewTopScore ? (
         <View style={styles.scoresContainer}>
-          <CustomText center style={styles.scoreText}>
+          <CustomText center h2 style={styles.scoreText}>
             Game score: {gameLevel}
           </CustomText>
         </View>
