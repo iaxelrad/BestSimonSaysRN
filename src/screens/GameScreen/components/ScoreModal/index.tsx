@@ -56,7 +56,7 @@ export const ScoreModal = (props: IProps) => {
         }}>
         <View style={styles.modalView}>
           <CustomText center style={styles.text}>
-            You Scored a New Record!
+            New Score added to top scores!
           </CustomText>
           <CustomText center style={styles.text}>
             Your score is: {String(score)}

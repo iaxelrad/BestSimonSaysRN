@@ -29,8 +29,8 @@ export const GameState = ({
     if (!isNewTopScore) {
       return `Game score: ${gameLevel} Record wasn't broken`;
     } else {
-      // After game ends with new record
-      return `Game score: ${gameLevel} - New record!`;
+      // After game ends with score entering the list
+      return `Game score: ${gameLevel} - New Score added to top scores`;
     }
   };
 
