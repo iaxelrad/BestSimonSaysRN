@@ -7,5 +7,4 @@ export const styles = StyleSheet.create({
     marginVertical: 16,
   },
   scoreText: {color: 'red', width: 250},
-  disabled: {opacity: 0.4},
 });

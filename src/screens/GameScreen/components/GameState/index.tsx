@@ -1,7 +1,7 @@
 import {View} from 'react-native';
 import React from 'react';
 import {CustomText} from '../../../../shared/components/CustomText';
-import {styles} from '../../GameScreen.styles';
+import {styles} from './GameState.styles';
 
 interface IProps {
   gameStarted: boolean;
