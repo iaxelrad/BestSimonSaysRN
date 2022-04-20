@@ -63,7 +63,7 @@ const GameScreen = () => {
     <WrapperComponent headerTitle="Let's Play">
       <ScoreModal
         highScores={results}
-        score={+gameLevel}
+        score={gameLevel as number}
         showNewScorePopup={showNewScorePopup}
         setShowNewScorePopup={setShowNewScorePopup}
       />
@@ -88,15 +88,17 @@ const GameScreen = () => {
         </View>
       ) : null}
       <GameButtons
-        setActiveButtonIndex={setActiveButtonIndex}
-        handlePlayerNoteInput={handlePlayerNoteInput}
-        disabled={!gameStarted || !playersTurn}
-        activeButtonIndex={activeButtonIndex}
+        setActiveButtonIndex={setActiveButtonIndex as (index: number) => void}
+        handlePlayerNoteInput={
+          handlePlayerNoteInput as (noteIndex: number) => void
+        }
+        disabled={(!gameStarted as boolean) || (!playersTurn as boolean)}
+        activeButtonIndex={activeButtonIndex as number}
       />
       <View style={globalStyles.buttonContainer}>
         <CustomButton
           disabled={disabled}
-          onPress={startTheGame}
+          onPress={startTheGame as () => Promise<void>}
           buttonText="Start Game"
           style={[globalStyles.greenBackground, disabled && styles.disabled]}
           textStyle={globalStyles.whiteText}
