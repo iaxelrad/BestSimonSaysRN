@@ -13,7 +13,7 @@ BestSimonSaysRN is a mobile app that was written for both mobile platforms using
 It's purpose is to demonstrate my skills as a mobile react native developer while utilizing the javascript subset - Typescript as well as AsyncStorage library for local device data persistance.
 
 ## Technologies
-Typescript, 
+React, React-Native, Typescript
 
 ## Setup
 - download or clone the repository
