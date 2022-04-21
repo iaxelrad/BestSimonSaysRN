@@ -1,5 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {Modal, Pressable, TextInput, View} from 'react-native';
 import {routes} from '../../../../routes';
 import {CustomText} from '../../../../shared/components/CustomText';
@@ -14,12 +14,19 @@ interface IProps {
   setShowNewScorePopup: Function;
   score: number;
   highScores: IHighScore[];
+  isHighestScore: boolean;
 }
 
 export const ScoreModal = (props: IProps) => {
   const navigation = useNavigation();
 
-  const {showNewScorePopup, setShowNewScorePopup, score, highScores} = props;
+  const {
+    showNewScorePopup,
+    setShowNewScorePopup,
+    score,
+    highScores,
+    isHighestScore,
+  } = props;
   const [playerName, setPlayerName] = useState<string>('');
 
   const onPressEnter = async () => {
@@ -27,18 +34,13 @@ export const ScoreModal = (props: IProps) => {
     highScores.sort((a: IHighScore, b: IHighScore) => b.score - a.score);
     highScores.splice(MAX_NUM_OF_RESULTS);
     await setHighScores(props.highScores);
-    setShowNewScorePopup(!showNewScorePopup);
+    onPressClose();
     navigation.navigate(routes.HIGH_SCORES);
   };
 
-  useEffect(() => {
-    if (playerName.length > 0) {
-      setPlayerName('');
-    }
-  }, []);
-
   const onPressClose = () => {
     setShowNewScorePopup(!showNewScorePopup);
+    setPlayerName('');
   };
 
   if (!showNewScorePopup) {
@@ -56,10 +58,12 @@ export const ScoreModal = (props: IProps) => {
         }}>
         <View style={styles.modalView}>
           <CustomText center style={styles.text}>
-            New Score added to top scores!
+            {isHighestScore
+              ? 'Highest Score added to top scores'
+              : 'New Score added to top scores!'}
           </CustomText>
           <CustomText center style={styles.text}>
-            Your score is: {String(score)}
+            {`Your score is: ${score}`}
           </CustomText>
           <CustomText center style={styles.text}>
             Please enter you name

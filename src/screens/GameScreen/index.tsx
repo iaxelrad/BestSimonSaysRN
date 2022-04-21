@@ -13,6 +13,7 @@ import {MAX_NUM_OF_RESULTS} from '../../shared/utils/constants';
 const GameScreen = () => {
   const navigation = useNavigation();
   const [results, setResults] = useState<IHighScore[]>([]);
+  const [isHighestScore, setIsHighestScore] = useState<boolean>(false);
 
   const [showNewScorePopup, setShowNewScorePopup] = useState<boolean>(false);
   const [isNewTopScore, setIsNewTopResult] = useState<boolean>(true);
@@ -30,8 +31,10 @@ const GameScreen = () => {
   const checkScore = async (score: number) => {
     const highScores = await getHighScores();
     const lowestScore = highScores?.[MAX_NUM_OF_RESULTS - 1]?.score ?? 0;
+    const highestScore = highScores?.[0]?.score;
+    const highestScoreAchieved = highestScore < score;
     if (score > lowestScore) {
-      return highScores;
+      return {highScores, highestScoreAchieved};
     }
     return;
   };
@@ -41,7 +44,8 @@ const GameScreen = () => {
       if (playerLost) {
         const retrieveHighScores = await checkScore(+gameLevel);
         if (retrieveHighScores) {
-          setResults(retrieveHighScores);
+          setResults(retrieveHighScores.highScores);
+          setIsHighestScore(retrieveHighScores.highestScoreAchieved);
           setShowNewScorePopup(true);
         } else {
           setIsNewTopResult(false);
@@ -62,12 +66,14 @@ const GameScreen = () => {
         score={gameLevel as number}
         showNewScorePopup={showNewScorePopup}
         setShowNewScorePopup={setShowNewScorePopup}
+        isHighestScore={isHighestScore}
       />
       <GameState
         gameStarted={gameStarted as boolean}
         playerLost={playerLost as boolean}
         isNewTopScore={isNewTopScore as boolean}
         gameLevel={gameLevel as number}
+        isHighestScore={isHighestScore}
       />
       <GameButtons
         setActiveButtonIndex={setActiveButtonIndex as (index: number) => void}

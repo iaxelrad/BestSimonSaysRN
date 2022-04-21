@@ -8,6 +8,7 @@ interface IProps {
   playerLost: boolean;
   isNewTopScore: boolean;
   gameLevel: number;
+  isHighestScore: boolean;
 }
 
 export const GameState = ({
@@ -15,6 +16,7 @@ export const GameState = ({
   playerLost,
   isNewTopScore,
   gameLevel,
+  isHighestScore,
 }: IProps) => {
   const gameStateMessage = () => {
     //Before game starts when game screen first appears
@@ -25,13 +27,22 @@ export const GameState = ({
     if (gameStarted) {
       return `Game score: ${gameLevel}`;
     }
+    //Score is added to top scores list
+    if (isNewTopScore) {
+      //Highest Score is added to top of the top scores list
+      if (isHighestScore) {
+        return `Game score: ${gameLevel} - Highest Score added to top scores`;
+      }
+      //Not highest Score is added to top of the top scores list
+      if (!isHighestScore) {
+        return `Game score: ${gameLevel} - New Score added to top scores`;
+      }
+    }
     // After game ends with no new record
     if (!isNewTopScore) {
-      return `Game score: ${gameLevel} Record wasn't broken`;
-    } else {
-      // After game ends with score entering the list
-      return `Game score: ${gameLevel} - New Score added to top scores`;
+      return `Game score: ${gameLevel} - Record wasn't broken`;
     }
+    // After game ends with score entering the list
   };
 
   return (
