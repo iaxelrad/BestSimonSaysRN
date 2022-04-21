@@ -1,6 +1,6 @@
 import React, {ReactNode} from 'react';
 import {SafeAreaView, StyleSheet} from 'react-native';
-import {globalStyles} from '../styles/GlobalStyles';
+import {globalStyles} from '../styles/globalStyles';
 import {CustomText} from './CustomText';
 
 interface IProps {

@@ -1,7 +1,7 @@
 import {View, ViewStyle} from 'react-native';
 import React from 'react';
 import {CustomButton} from './CustomButton';
-import {globalStyles} from '../styles/GlobalStyles';
+import {globalStyles} from '../styles/globalStyles';
 
 interface IProps {
   containerStyle?: ViewStyle;
