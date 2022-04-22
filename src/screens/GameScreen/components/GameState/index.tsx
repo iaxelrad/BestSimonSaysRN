@@ -31,16 +31,16 @@ export const GameState = ({
     if (isNewTopScore) {
       //Highest Score is added to top of the top scores list
       if (isHighestScore) {
-        return `Game score: ${gameLevel} - Highest Score added to top scores`;
+        return `Game score: ${gameLevel}\nHighest Score added to top scores`;
       }
       //Not highest Score is added to top of the top scores list
       if (!isHighestScore) {
-        return `Game score: ${gameLevel} - New Score added to top scores`;
+        return `Game score: ${gameLevel}\nNew Score added to top scores`;
       }
     }
     // After game ends with no new record
     if (!isNewTopScore) {
-      return `Game score: ${gameLevel} - Record wasn't broken`;
+      return `Game score: ${gameLevel}\nRecord wasn't broken`;
     }
     // After game ends with score entering the list
   };
