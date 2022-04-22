@@ -21,7 +21,7 @@ export const GameState = ({
   const gameStateMessage = () => {
     //Before game starts when game screen first appears
     if (!gameStarted && !playerLost) {
-      return 'Press the green button to start';
+      return 'Press the start button below to start';
     }
     // During game play
     if (gameStarted) {
