@@ -8,6 +8,7 @@ import {IHighScore} from '../../../../shared/interfaces';
 import {MAX_NUM_OF_RESULTS} from '../../../../shared/utils/constants';
 import {setHighScores} from '../../../../shared/utils/helpers';
 import {styles} from './ScoreModal.styles';
+import {useTranslation} from 'react-i18next';
 
 interface IProps {
   showNewScorePopup: boolean;
@@ -19,7 +20,7 @@ interface IProps {
 
 export const ScoreModal = (props: IProps) => {
   const navigation = useNavigation();
-
+  const {t} = useTranslation();
   const {
     showNewScorePopup,
     setShowNewScorePopup,
@@ -59,19 +60,19 @@ export const ScoreModal = (props: IProps) => {
         <View style={styles.modalView}>
           <CustomText center style={styles.text}>
             {isHighestScore
-              ? 'Highest Score added to top scores'
-              : 'New Score added to top scores!'}
+              ? t('game_popup_highest_score')
+              : t('game_popup_new_score')}
           </CustomText>
           <CustomText center style={styles.text}>
-            {`Your score is: ${score}`}
+            {t('game_popup_score') + score}
           </CustomText>
           <CustomText center style={styles.text}>
-            Please enter you name
+            {t('game_popup_name_input')}
           </CustomText>
           <View style={styles.inputContainer}>
             <TextInput
               style={styles.textInput}
-              placeholder={'Enter your name'}
+              placeholder={t('game_popup_name_input')}
               value={playerName}
               onChangeText={setPlayerName}
             />
@@ -79,9 +80,9 @@ export const ScoreModal = (props: IProps) => {
           <ButtonGroup
             containerStyle={styles.modalButtons}
             onPressGreenButton={onPressEnter}
-            greenButtonText="Enter"
+            greenButtonText={t('game_popup_enter')}
             onPressRedButton={onPressClose}
-            redButtonText="Close"
+            redButtonText={t('game_popup_close')}
           />
         </View>
       </Pressable>

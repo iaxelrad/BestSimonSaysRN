@@ -5,6 +5,7 @@ import {routes} from './routes';
 import GameScreen from './screens/GameScreen';
 import HighScoreScreen from './screens/HighScoreScreen';
 import HomeScreen from './screens/HomeScreen';
+import './i18n';
 
 const Stack = createNativeStackNavigator();
 const screenOptions = {

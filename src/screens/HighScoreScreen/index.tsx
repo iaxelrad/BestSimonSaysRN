@@ -9,9 +9,12 @@ import {getHighScores, sortScores} from '../../shared/utils/helpers';
 import {CustomText} from '../../shared/components/CustomText';
 import {styles} from './HighScoresScreen.styles';
 import ButtonGroup from '../../shared/components/ButtonGroup';
+import {useTranslation} from 'react-i18next';
+import i18n from '../../i18n';
 
 const HighScoreScreen = () => {
   const navigation = useNavigation();
+  const {t} = useTranslation();
 
   const [highScores, setHighScores] = useState<IHighScore[]>([]);
 
@@ -44,9 +47,17 @@ const HighScoreScreen = () => {
     return (
       <View key={`${name}-separator-${index}`}>
         {index > 0 && <View style={styles.separator} />}
-        <CustomText style={styles.score}>{`${
-          index + 1
-        }. ${name} - score: ${score}`}</CustomText>
+        <View
+          style={{
+            flexDirection: i18n.language === 'heb' ? 'row-reverse' : 'row',
+            alignItems: 'center',
+          }}>
+          <CustomText style={styles.score}>{`${index + 1} `}</CustomText>
+          <CustomText style={styles.score}>{`${name} ${t(
+            'game_highscores_score',
+          )}`}</CustomText>
+          <CustomText style={styles.score}>{`${score}`}</CustomText>
+        </View>
       </View>
     );
   };
@@ -55,13 +66,16 @@ const HighScoreScreen = () => {
     if (highScores.length === 0) {
       return (
         <CustomText h2 center style={styles.noScores}>
-          There are currently no scores, You can be the first to be on the
-          board!
+          {t('game_highscores_emptyList')}
         </CustomText>
       );
     }
     return (
-      <ScrollView bounces={false}>
+      <ScrollView
+        bounces={false}
+        contentContainerStyle={{
+          justifyContent: 'flex-start',
+        }}>
         {highScores
           .sort(sortScores)
           .slice(0, MAX_NUM_OF_RESULTS)
@@ -71,13 +85,13 @@ const HighScoreScreen = () => {
   };
 
   return (
-    <WrapperComponent headerTitle="Top Scores">
+    <WrapperComponent headerTitle={t('game_highscores_title')}>
       {renderContent()}
       <ButtonGroup
         onPressGreenButton={goToNewGame}
-        greenButtonText="New Game"
+        greenButtonText={t('game_highscores_new_game')}
         onPressRedButton={goToHome}
-        redButtonText="Home Page"
+        redButtonText={t('game_highscores_home')}
       />
     </WrapperComponent>
   );

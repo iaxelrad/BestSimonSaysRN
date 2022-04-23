@@ -9,9 +9,11 @@ import {GameState} from './components/GameState';
 import {ScoreModal} from './components/ScoreModal';
 import ButtonGroup from '../../shared/components/ButtonGroup';
 import {MAX_NUM_OF_RESULTS} from '../../shared/utils/constants';
+import {useTranslation} from 'react-i18next';
 
 const GameScreen = () => {
   const navigation = useNavigation();
+  const {t} = useTranslation();
   const [results, setResults] = useState<IHighScore[]>([]);
   const [isHighestScore, setIsHighestScore] = useState<boolean>(false);
 
@@ -60,7 +62,7 @@ const GameScreen = () => {
   };
 
   return (
-    <WrapperComponent headerTitle="Let's Play">
+    <WrapperComponent headerTitle={t('game_title')}>
       <ScoreModal
         highScores={results}
         score={gameLevel as number}
@@ -85,9 +87,9 @@ const GameScreen = () => {
       />
       <ButtonGroup
         onPressGreenButton={startTheGame as () => Promise<void>}
-        greenButtonText="Start Game"
+        greenButtonText={t('game_start_button')}
         onPressRedButton={goHome}
-        redButtonText="Home Page"
+        redButtonText={t('game_home_button')}
         disabled={!!gameStarted}
       />
     </WrapperComponent>
