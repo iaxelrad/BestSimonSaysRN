@@ -5,6 +5,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     marginVertical: 16,
+    height: 90,
   },
   scoreText: {color: 'red', width: 250},
 });
