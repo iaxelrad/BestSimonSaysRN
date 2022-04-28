@@ -1,20 +1,20 @@
 import React from 'react';
 import {Image, View} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import {routes} from '../../routes';
 import {WrapperComponent} from '../../shared/components/WrapperComponent';
 import {styles} from './HomeScreen.styles';
 import ButtonGroup from '../../shared/components/ButtonGroup';
+import {StackParams} from '../../App';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 
 const HomeScreen = () => {
-  const navigation = useNavigation();
-
+  const navigation = useNavigation<NativeStackNavigationProp<StackParams>>();
   const goToNewGame = (): void => {
-    navigation.navigate(routes.GAME);
+    navigation.navigate('Game');
   };
 
   const goToResults = (): void => {
-    navigation.navigate(routes.HIGH_SCORES);
+    navigation.navigate('HighScores');
   };
 
   return (

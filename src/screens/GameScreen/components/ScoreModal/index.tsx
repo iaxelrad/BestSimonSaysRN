@@ -1,13 +1,14 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {useState} from 'react';
 import {Modal, Pressable, TextInput, View} from 'react-native';
-import {routes} from '../../../../routes';
 import {CustomText} from '../../../../shared/components/CustomText';
 import ButtonGroup from '../../../../shared/components/ButtonGroup';
 import {IHighScore} from '../../../../shared/interfaces';
 import {MAX_NUM_OF_RESULTS} from '../../../../shared/utils/constants';
 import {setHighScores} from '../../../../shared/utils/helpers';
 import {styles} from './ScoreModal.styles';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {StackParams} from '../../../../App';
 
 interface IProps {
   showNewScorePopup: boolean;
@@ -18,7 +19,7 @@ interface IProps {
 }
 
 export const ScoreModal = (props: IProps) => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NativeStackNavigationProp<StackParams>>();
 
   const {
     showNewScorePopup,
@@ -35,7 +36,7 @@ export const ScoreModal = (props: IProps) => {
     highScores.splice(MAX_NUM_OF_RESULTS);
     await setHighScores(props.highScores);
     onPressClose();
-    navigation.navigate(routes.HIGH_SCORES);
+    navigation.navigate('HighScores');
   };
 
   const onPressClose = () => {

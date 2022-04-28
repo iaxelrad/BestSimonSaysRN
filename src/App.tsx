@@ -1,12 +1,17 @@
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
-import {routes} from './routes';
 import GameScreen from './screens/GameScreen';
 import HighScoreScreen from './screens/HighScoreScreen';
 import HomeScreen from './screens/HomeScreen';
 
-const Stack = createNativeStackNavigator();
+export type StackParams = {
+  Home: undefined;
+  Game: undefined;
+  HighScores: undefined;
+};
+
+const Stack = createNativeStackNavigator<StackParams>();
 const screenOptions = {
   headerShown: false,
 };
@@ -14,12 +19,10 @@ const screenOptions = {
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName={routes.HOME}
-        screenOptions={screenOptions}>
-        <Stack.Screen name={routes.HOME} component={HomeScreen} />
-        <Stack.Screen name={routes.GAME} component={GameScreen} />
-        <Stack.Screen name={routes.HIGH_SCORES} component={HighScoreScreen} />
+      <Stack.Navigator initialRouteName="Home" screenOptions={screenOptions}>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Game" component={GameScreen} />
+        <Stack.Screen name="HighScores" component={HighScoreScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

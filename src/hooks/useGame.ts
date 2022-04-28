@@ -85,13 +85,14 @@ export const useGame = () => {
     }
   }, [gameSequence, gameStarted]);
 
-  return [
-    [activeButtonIndex, setActiveButtonIndex],
+  return {
+    activeButtonIndex,
+    setActiveButtonIndex,
     gameStarted,
     playersTurn,
     gameLevel,
     playerLost,
     startTheGame,
     handlePlayerNoteInput,
-  ];
+  };
 };

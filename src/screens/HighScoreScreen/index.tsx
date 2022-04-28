@@ -1,7 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {useEffect, useState} from 'react';
 import {ScrollView, View} from 'react-native';
-import {routes} from '../../routes';
 import {WrapperComponent} from '../../shared/components/WrapperComponent';
 import {IHighScore} from '../../shared/interfaces';
 import {MAX_NUM_OF_RESULTS} from '../../shared/utils/constants';
@@ -9,9 +8,11 @@ import {getHighScores, sortScores} from '../../shared/utils/helpers';
 import {CustomText} from '../../shared/components/CustomText';
 import {styles} from './HighScoresScreen.styles';
 import ButtonGroup from '../../shared/components/ButtonGroup';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {StackParams} from '../../App';
 
 const HighScoreScreen = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NativeStackNavigationProp<StackParams>>();
 
   const [highScores, setHighScores] = useState<IHighScore[]>([]);
 
@@ -20,7 +21,7 @@ const HighScoreScreen = () => {
   };
 
   const goToNewGame = (): void => {
-    navigation.navigate(routes.GAME);
+    navigation.navigate('Game');
   };
 
   useEffect(() => {
