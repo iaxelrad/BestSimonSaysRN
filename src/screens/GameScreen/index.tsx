@@ -9,11 +9,10 @@ import {GameState} from './components/GameState';
 import {ScoreModal} from './components/ScoreModal';
 import ButtonGroup from '../../shared/components/ButtonGroup';
 import {MAX_NUM_OF_RESULTS} from '../../shared/utils/constants';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {StackParams} from '../../App';
+import {NavigationProp} from '../../shared/utils/types';
 
 const GameScreen = () => {
-  const navigation = useNavigation<NativeStackNavigationProp<StackParams>>();
+  const navigation = useNavigation<NavigationProp>();
   const [results, setResults] = useState<IHighScore[]>([]);
   const [isHighestScore, setIsHighestScore] = useState<boolean>(false);
 

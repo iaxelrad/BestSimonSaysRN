@@ -8,11 +8,10 @@ import {getHighScores, sortScores} from '../../shared/utils/helpers';
 import {CustomText} from '../../shared/components/CustomText';
 import {styles} from './HighScoresScreen.styles';
 import ButtonGroup from '../../shared/components/ButtonGroup';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {StackParams} from '../../App';
+import {NavigationProp} from '../../shared/utils/types';
 
 const HighScoreScreen = () => {
-  const navigation = useNavigation<NativeStackNavigationProp<StackParams>>();
+  const navigation = useNavigation<NavigationProp>();
 
   const [highScores, setHighScores] = useState<IHighScore[]>([]);
 

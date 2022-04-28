@@ -4,12 +4,7 @@ import React from 'react';
 import GameScreen from './screens/GameScreen';
 import HighScoreScreen from './screens/HighScoreScreen';
 import HomeScreen from './screens/HomeScreen';
-
-export type StackParams = {
-  Home: undefined;
-  Game: undefined;
-  HighScores: undefined;
-};
+import {StackParams} from './shared/utils/types';
 
 const Stack = createNativeStackNavigator<StackParams>();
 const screenOptions = {

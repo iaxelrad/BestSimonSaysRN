@@ -4,11 +4,10 @@ import {useNavigation} from '@react-navigation/native';
 import {WrapperComponent} from '../../shared/components/WrapperComponent';
 import {styles} from './HomeScreen.styles';
 import ButtonGroup from '../../shared/components/ButtonGroup';
-import {StackParams} from '../../App';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {NavigationProp} from '../../shared/utils/types';
 
 const HomeScreen = () => {
-  const navigation = useNavigation<NativeStackNavigationProp<StackParams>>();
+  const navigation = useNavigation<NavigationProp>();
   const goToNewGame = (): void => {
     navigation.navigate('Game');
   };

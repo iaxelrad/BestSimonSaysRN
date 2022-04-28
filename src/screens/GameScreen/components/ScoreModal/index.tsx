@@ -7,19 +7,18 @@ import {IHighScore} from '../../../../shared/interfaces';
 import {MAX_NUM_OF_RESULTS} from '../../../../shared/utils/constants';
 import {setHighScores} from '../../../../shared/utils/helpers';
 import {styles} from './ScoreModal.styles';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {StackParams} from '../../../../App';
+import {NavigationProp} from '../../../../shared/utils/types';
 
 interface IProps {
   showNewScorePopup: boolean;
-  setShowNewScorePopup: Function;
   score: number;
+  setShowNewScorePopup: (showNewScorePopup: boolean) => void;
   highScores: IHighScore[];
   isHighestScore: boolean;
 }
 
 export const ScoreModal = (props: IProps) => {
-  const navigation = useNavigation<NativeStackNavigationProp<StackParams>>();
+  const navigation = useNavigation<NavigationProp>();
 
   const {
     showNewScorePopup,
