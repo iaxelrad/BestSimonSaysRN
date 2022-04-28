@@ -48,7 +48,10 @@ export const ScoreModal = (props: IProps) => {
   }
 
   return (
-    <Modal animationType="slide" transparent={true}>
+    <Modal
+      animationType="slide"
+      transparent={true}
+      onRequestClose={onPressClose}>
       <Pressable
         style={styles.background}
         onPress={event => {
