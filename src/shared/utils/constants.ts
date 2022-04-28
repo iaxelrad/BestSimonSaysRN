@@ -23,6 +23,8 @@ export const gameButtons: GameButtonModel[] = [
   },
 ];
 
+export const FAIL_SOUND = new Sound('fail_sound.mp3', Sound.MAIN_BUNDLE);
+
 export const MAX_NUM_OF_RESULTS = 10;
 
 export const GAME_SPEED = 15;

@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 import {getRandomInt, sleep} from '../shared/utils/helpers';
-import {gameButtons, GAME_SPEED} from '../shared/utils/constants';
+import {FAIL_SOUND, gameButtons, GAME_SPEED} from '../shared/utils/constants';
 
 export const useGame = () => {
   const [gameStarted, setGameStarted] = useState(false);
@@ -52,6 +52,8 @@ export const useGame = () => {
           setPlayerLost(true);
           setPlayerSequence([]);
           setGameSequence([]);
+          await sleep(5000 / GAME_SPEED);
+          FAIL_SOUND.play();
           return;
         }
 
